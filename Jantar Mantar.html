@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jantar Mantar - Explore Bharat</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Jantar_Mantar_at_Jaipur.jpg/1200px-Jantar_Mantar_at_Jaipur.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.85);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #09EFFF;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .location {
+      text-align: center;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    .hero-img {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .hero-img img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #09EFFF;
+    }
+
+    .description, .features, .info-section {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      color: #e0e0e0;
+      text-align: justify;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      margin: 20px 0 10px;
+      color: #09EFFF;
+      font-weight: bold;
+    }
+
+    .gallery-title {
+      font-size: 1.8rem;
+      color: #09EFFF;
+      margin-bottom: 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s;
+      border: 2px solid #444;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #bbb;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+      .description, .features, .info-section {
+        font-size: 1rem;
+      }
+    }
+
+    .highlight {
+      color: #09EFFF;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <div class="container">
+      <h1>Jantar Mantar</h1>
+      <div class="location">📍 Jaipur, Rajasthan, India</div>
+
+      <div class="hero-img">
+        <img src="https://www.andbeyond.com/wp-content/uploads/sites/5/jamtar-mantar-jaipur.jpg" alt="Jantar Mantar" />
+      </div>
+
+      <div class="description">
+        <span class="highlight">Jantar Mantar</span> in Jaipur is an astronomical observatory built in the early 18th century by Maharaja Sawai Jai Singh II. It is one of five observatories he constructed across India, but the Jaipur Jantar Mantar is the largest and best preserved. It consists of 19 architectural astronomical instruments, including the world's largest stone sundial.
+        <br /><br />
+        Recognized as a <span class="highlight">UNESCO World Heritage Site</span> in 2010, Jantar Mantar is not only a scientific marvel but also a demonstration of the intellectual and cultural advancements of India during the early modern period. The instruments are fixed and used to measure time, track celestial bodies, and predict eclipses with remarkable accuracy.
+        <br /><br />
+        Each structure within the complex is a tool with a specific purpose in astronomical observation. Unlike modern telescopic observatories, Jantar Mantar uses massive masonry instruments to gather and study celestial data. This blend of science, architecture, and art makes it an enduring symbol of India's rich scientific heritage.
+      </div>
+
+      <div class="features">
+        <div class="section-title">Key Highlights:</div>
+        <ul>
+          <li><strong>UNESCO Status:</strong> World Heritage Site (2010)</li>
+          <li><strong>Commissioned by:</strong> Maharaja Sawai Jai Singh II</li>
+          <li><strong>Established:</strong> 1724–1734</li>
+          <li><strong>Instruments:</strong> 19 architectural astronomical instruments</li>
+          <li><strong>Special Feature:</strong> World's largest stone sundial (Samrat Yantra)</li>
+          <li><strong>Purpose:</strong> Measure time, track stars, predict eclipses</li>
+        </ul>
+      </div>
+
+      <div class="info-section">
+        <div class="section-title">Visitor Information:</div>
+        <p><strong class="highlight">Best Time to Visit:</strong> November to February</p>
+        <p><strong class="highlight">Entry Fee:</strong> ₹50 (Indians), ₹200 (Foreigners)</p>
+        <p><strong class="highlight">Timings:</strong> 9:00 AM to 4:30 PM (Open all days)</p>
+        <p><strong class="highlight">Nearby:</strong> City Palace, Hawa Mahal, Albert Hall Museum</p>
+      </div>
+
+      <div class="gallery-title">Image Gallery</div>
+      <div class="gallery">
+        <img src="https://jaipurbeat.com/wp-content/uploads/2017/10/img_6936.jpg" alt="Samrat Yantra - Jantar Mantar" />
+        <img src="https://i0.wp.com/archestudy.com/wp-content/uploads/2021/06/1-1-1.jpg?fit=940%2C529&ssl=1" alt="Astronomical Instruments in Jantar Mantar" />
+        <img src="https://live.staticflickr.com/5026/5848727937_1592d16da3_b.jpg" alt="Jai Prakash Yantra" />
+        <img src="https://api.architectuul.org/media/4ebd15be-0578-41f1-86b8-03116d7b5f76/1312x.jpg" alt="Interior Structures of Jantar Mantar" />
+        <img src="https://revolvingcompass.com/wp/wp-content/uploads/2020/11/JM_NadivalyaYantra.jpg" alt="Giant Sundial at Jantar Mantar" />
+        <img src="https://rajasthanyatra.in/blog/wp-content/uploads/2024/11/jantar-mantar-jaipur-2.webp" alt="Visitors exploring Jantar Mantar" />
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2025 Explore Bharat. All rights reserved.
+    </footer>
+  </div>
+</body>
+</html>

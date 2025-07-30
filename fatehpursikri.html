@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fatehpur Sikri - Explore Bharat</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfGRDWJZ_mZQwUtE09n0z83Jzp8zTbxZblcQ&s') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.75);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #09EFFF;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .location {
+      text-align: center;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    .hero-img {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .hero-img img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #09EFFF;
+    }
+
+    .description, .features, .info-section {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      color: #e0e0e0;
+      text-align: justify;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      margin: 20px 0 10px;
+      color: #09EFFF;
+      font-weight: bold;
+    }
+
+    .gallery-title {
+      font-size: 1.8rem;
+      color: #09EFFF;
+      margin-bottom: 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s;
+      border: 2px solid #444;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #bbb;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+      .description, .features, .info-section {
+        font-size: 1rem;
+      }
+    }
+
+    .highlight {
+      color: #09EFFF;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <div class="container">
+      <h1>Fatehpur Sikri</h1>
+      <div class="location">📍 Uttar Pradesh, India</div>
+
+      <div class="hero-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Fatehput_Sikiri_Buland_Darwaza_gate_2010.jpg/1200px-Fatehput_Sikiri_Buland_Darwaza_gate_2010.jpg" alt="Fatehpur Sikri" />
+      </div>
+
+      <div class="description">
+        <span class="highlight">Fatehpur Sikri</span> is a stunning historical city founded in the late 16th century by <span class="highlight">Emperor Akbar</span>, located near Agra in Uttar Pradesh. Built as a symbol of Akbar’s vision of religious harmony and administrative excellence, it served briefly as the capital of the Mughal Empire.
+        <br /><br />
+        Constructed entirely in <span class="highlight">red sandstone</span>, the city showcases a seamless blend of <span class="highlight">Islamic, Hindu, and Jain architecture</span>. The layout includes royal palaces, public halls, religious buildings, courtyards, and ornamental gates. Iconic structures like the <span class="highlight">Buland Darwaza</span>, <span class="highlight">Jama Masjid</span>, and <span class="highlight">Panch Mahal</span> stand as testaments to the empire’s glory.
+        <br /><br />
+        Fatehpur Sikri was abandoned due to <span class="highlight">water scarcity</span>, yet it remains one of the best-preserved Mughal cities in India. The complex still echoes the grandeur of Akbar’s court and his experiments with faith, administration, and culture.
+        <br /><br />
+        Declared a <span class="highlight">UNESCO World Heritage Site</span>, Fatehpur Sikri offers a journey through India’s rich medieval past. It is not just a monument but a historical dialogue carved in red stone, embodying Akbar’s dream of a united empire.
+      </div>
+
+      <div class="features">
+        <div class="section-title">Key Features:</div>
+        <ul>
+          <li><strong>Founded By:</strong> <span class="highlight">Akbar the Great</span></li>
+          <li><strong>Established:</strong> <span class="highlight">1571 AD</span></li>
+          <li><strong>Architecture:</strong> Indo-Islamic with Persian influences</li>
+          <li><strong>Main Attractions:</strong> Buland Darwaza, Diwan-i-Khas, Jama Masjid, Panch Mahal</li>
+          <li><strong>Material Used:</strong> Red sandstone</li>
+        </ul>
+      </div>
+
+      <div class="info-section">
+        <div class="section-title">Visitor Information:</div>
+        <p><strong>Opening Hours:</strong> 6:00 AM – 6:00 PM (Daily)</p>
+        <p><strong class="highlight">Entry Fee:</strong><br />
+          Indian Citizens: ₹40<br />
+          Foreign Tourists: ₹600
+        </p>
+        <p><strong class="highlight">Best Time to Visit:</strong> November to February</p>
+        <p><strong class="highlight">How to Reach:</strong> Easily accessible from Agra by road or rail; regular buses, taxis, and trains are available.</p>
+      </div>
+
+      <div class="gallery-title">Image Gallery</div>
+      <div class="gallery">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Side_view_of_Buland_Darwaza%2C_Fatehpur_Sikri.jpg/250px-Side_view_of_Buland_Darwaza%2C_Fatehpur_Sikri.jpg" alt="Buland Darwaza" />
+        <img src="https://www.vacationindia.com/wp-content/uploads/2022/06/29-imperial-courtyard-fatehpur-sikri.jpg" alt="Fatehpur Sikri Courtyard" />
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNUDAbPof6saXLbNS43Q7jx8FDwRdohPhv_w&s" alt="Panch Mahal View" />
+        <img src="https://kevinstandagephotography.wordpress.com/wp-content/uploads/2019/05/cover-5.jpg" alt="Jama Masjid Architecture" />
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEhHJlPPYQ4dQHBMUGHpZAN1wzWJbud3ZXwQ&s" alt="Diwan-i-Khas Interior" />
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSA9ls2BD5Roc1njqqI5wVCSLTZ82gF5uDkEg&s" alt="Fatehpur Sikri Sunset" />
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2025 Explore Bharat. All rights reserved.
+    </footer>
+  </div>
+</body>
+</html>

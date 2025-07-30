@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        #menu {
+            background: #000000;
+            height: 66px;
+            padding-right: 18px;
+            border-radius: 5px;
+        }
+        #menu ul, #menu li {
+            margin: 0 auto;
+            padding: 0;
+            list-style: none
+        }
+        #menu ul {
+            width: 100%;
+            text-align: right;
+            margin-top: 20px;
+        }
+        #menu li {
+            display: inline-block;
+            position: relative;
+        }
+        #menu a {
+            display: block;
+            line-height: 66px;
+            padding: 0 28px;
+            text-decoration: none;
+            color: #FFFFFF;
+            font-size: 17px;
+        }
+        #menu a.dropdown-arrow:after {
+            content: "\2B9F";
+            margin-left: 5px;
+        }
+        #menu li a:hover {
+            color: #09EFFF;
+            background: #000000;
+        }
+        #menu input {
+            display: none;
+            margin: 0;
+            padding: 0;
+            height: 66px;
+            width: 100%;
+            opacity: 0;
+            cursor: pointer
+        }
+        #menu label {
+            display: none;
+            line-height: 66px;
+            text-align: center;
+            position: absolute;
+            left: 35px
+        }
+        #menu label:before {
+            font-size: 1.6em;
+            color: #FFFFFF;
+            content: "\2261"; 
+            margin-left: 20px;
+        }
+        #menu ul.sub-menus{
+            height: auto;
+            overflow: hidden;
+            width: 170px;
+            background: #343434;
+            position: absolute;
+            z-index: 99;
+            display: none;
+        }
+        #menu ul.sub-menus li {
+            display: block;
+            text-align: left;
+            width: 100%;
+        }
+        #menu ul.sub-menus a {
+            color: #FFFFFF;
+            font-size: 15px;
+        }
+        #menu li:hover ul.sub-menus {
+            display: block
+        }
+        #menu ul.sub-menus a:hover{
+            background: #000000;
+            color: #09EFFF;
+        }
+        @media screen and (max-width: 800px){
+            #menu {position:relative}
+            #menu ul {background:#343434;position:absolute;top:100%;right:0;left:0;z-index:3;height:auto;display:none;text-align:left;}
+            #menu ul.sub-menus {width:100%;position:static;}
+            #menu ul.sub-menus a {padding-left:30px;}
+            #menu li {display:block;float:none;width:auto;}
+            #menu input, #menu label {position:absolute;top:0;left:0;display:block}
+            #menu input {z-index:4}
+            #menu input:checked + label {color:#FFFFFF}
+            #menu input:checked + label:before {content:"\00d7"}
+            #menu input:checked ~ ul {display:block}
+        }
+        .header img {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            margin-right: 690px;
+            margin-top: 10px;
+            margin-left: 25px;
+        }
+        .logo p {
+            color: #ffffff;
+        }
+        .header {
+            background-color: #000000;
+            display: flex;
+            flex: 6fr;
+            padding: 0 20px;
+        }
+        .logo {
+            display: grid;
+            grid: 2fr;
+            color: #ffffff;
+            width: 750px;
+            margin-left: 20px;
+        }
+        .hero {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 36px;
+      color: #09EFFF;
+      padding: 0;
+      margin: 0;
+    }
+
+     
+    .cards-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 40px;
+      justify-content: center;
+      align-items: center;
+      margin-left: 140px;
+      margin-right: 140px;
+      gap: 40px;
+    }
+    .place-card {
+      background-color: #1a1a1a;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(51, 153, 255, 0.2);
+      width: 600px;
+      height: 750px;
+      padding: 20px;
+      font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    .place-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px 12px 0 0;
+    }
+    .place-card h3 {
+      color: #09EFFF;
+      margin: 10px 0;
+    }
+    .place-card p {
+      color: #ffffff;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .footer {
+      background-color: #000000;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+    .place-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      margin: 0;
+      padding: 0;
+    }
+    </style>
+</head>
+<body>
+    <div class="header">  
+        <div class="logo">
+            <img src="Images/sample.jpg" alt="Logo">
+            <p>Explore Bharat</p>
+        </div>
+        <nav id='menu'>
+        <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+        <ul>
+            <li><a href='index.html'>Home</a></li>
+            <li><a href='About.html'>About</a></li>
+            <li><a href='Contact.html'>Contact Us</a></li>
+            <li><a href='HeritageSites.html'>Heritage Sites</a></li>
+            <li><a class='dropdown-arrow' href='ExploreStates.html'>Explore States</a>
+            <ul class='sub-menus'>
+                <li><a href='Maharashtra.html'>Maharashtra</a></li>
+                <li><a href='Rajasthan.html'>Rajasthan</a></li>
+                <li><a href='Goa.html'>Goa</a></li>
+                <li><a href='Uttarakhand.html'>Uttarakhand</a></li>
+                <li><a href='Punjab.html'>Punjab</a></li>
+                <li><a href='Delhi.html'>Delhi</a></li>
+                <li><a href='Gujrat.html'>Gujrat</a></li>
+            </ul>
+            </li>
+        </ul>
+        </nav>
+    </div>
+    <hr>
+      <section class="hero">
+      
+        <h2>Jaisalmer</h2>
+        <p>~Forts, dunes, and golden hues – that’s Jaisalmer.</p>
+      </section>
+         <div class="cards-section" id="heritage-cards">
+        <!-- Tourist places in Jaisalmer -->
+        <div class="place-card">
+            <img src="Images/JaisalmerFort.jpg" alt="Jaisalmer Fort">
+            <h3>Jaisalmer Fort: The Golden Citadel</h3>
+            <p>
+                Jaisalmer Fort, also known as Sonar Quila, is a UNESCO World Heritage Site and one of the largest forts in the world.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~It’s made of yellow sandstone, giving it a golden hue, especially at sunset!
+                <b>Things to Explore at Jaisalmer Fort:</b>
+                <ul>
+                    <li>
+                        The Palaces:
+                        <br>Explore the royal palaces with intricate carvings and architecture.
+                    </li>
+                    <li>
+                        The Jain Temples:
+                        <br>Visit the beautifully carved Jain temples within the fort.
+                    </li>
+                    <li>
+                        The Local Markets:
+                        <br>Shop for handicrafts, jewelry, and souvenirs in the bustling markets.
+                    </li>
+                    <li>
+                        The Viewpoints:
+                        <br>Enjoy panoramic views of the city and desert from various viewpoints.
+                    </li>
+                    <li>
+                        The Cultural Events:
+                        <br>Experience cultural performances and events held in the fort.
+                    </li>
+                </ul>
+                <br><b>Why Visit Jaisalmer Fort?</b>
+                <br>!Because it’s a living fort with vibrant culture, history, and stunning architecture!
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/PatwonKiHaveli.webp" alt="Patwon Ki Haveli">
+            <h3>Patwon Ki Haveli: The Jewel of Jaisalmer</h3>
+            <p>
+                Patwon Ki Haveli is a collection of five havelis, showcasing the rich architectural heritage of Jaisalmer.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~It’s one of the largest and most elaborate havelis in Rajasthan!
+                <b>Things to Explore at Patwon Ki Haveli:</b>
+                <ul>
+                    <li>
+                        The Intricate Carvings:
+                        <br>Admire the detailed carvings and frescoes adorning the walls.
+                    </li>
+                    <li>
+                        The Museum:
+                        <br>Visit the museum displaying artifacts from the bygone era.
+                    </li>
+                    <li>
+                        The Courtyards:
+                        <br>Stroll through the beautiful courtyards surrounded by stunning architecture.
+                    </li>
+                    <li>
+                        The Local Artisans:
+                        <br>Meet local artisans showcasing their crafts and skills.
+                    </li>
+                    <li>
+                        The Cultural Performances:
+                        <br>Enjoy cultural performances held in the haveli premises.
+                    </li>
+                </ul>
+                <br><b>Why Visit Patwon Ki Haveli?</b>
+                <br>!Because it’s a glimpse into the opulent lifestyle of the royal families of Jaisalmer!
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/SamSandDunes.webp" alt="Sam Sand Dunes">
+            <h3>Sam Sand Dunes: The Desert Adventure</h3>
+            <p>
+                Sam Sand Dunes is a popular desert destination near Jaisalmer, known for its stunning sand dunes and desert activities.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~It’s one of the best places to experience the Thar Desert’s beauty and culture!
+                <b>Things to Explore at Sam Sand Dunes:</b>
+                <ul>
+                    <li>
+                        The Camel Rides:
+                        <br>Experience a camel ride through the golden sand dunes.
+                    </li>
+                    <li>
+                        The Desert Safari:
+                        <br>Enjoy thrilling jeep safaris across the vast desert landscape.
+                    </li>
+                    <li>
+                        The Cultural Performances:
+                        <br>Witness traditional Rajasthani dance and music performances in the desert.
+                    </li>
+                    <li>
+                        The Sunset Views:
+                        <br>Marvel at the breathtaking sunset views over the sand dunes.
+                    </li>
+                    <li>
+                        The Camping Experience:
+                        <br>Spend a night under the stars in desert camps with local cuisine.
+                    </li>
+                </ul>
+                <br><b>Why Visit Sam Sand Dunes?</b>
+                <br>!Because it’s an unforgettable desert experience filled with adventure, culture, and natural beauty!
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/DesertNationalPark.webp" alt="Desert National Park">
+            <h3>Desert National Park: The Wildlife Haven</h3>
+            <p>
+                Desert National Park is a vast protected area showcasing the unique desert ecosystem and wildlife of the Thar Desert.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~It’s home to several endangered species, including the Great Indian Bustard!
+                <b>Things to Explore at Desert National Park:</b>
+                <ul>
+                    <li>
+                        The Wildlife Safari:
+                        <br>Embark on a safari to spot diverse wildlife, including deer, foxes, and birds.
+                    </li>
+                    <li>
+                        The Sand Dunes:
+                        <br>Explore the stunning sand dunes and unique rock formations.
+                    </li>
+                    <li>
+                        The Flora and Fauna:
+                        <br>Discover the diverse flora and fauna adapted to the desert environment.
+                    </li>
+                    <li>
+                        The Bird Watching:
+                        <br>Enjoy bird watching, especially during the migratory season.
+                    </li>
+                    <li>
+                        The Cultural Heritage:
+                        <br>Learn about the cultural heritage of the desert communities living in harmony with nature.
+                    </li>
+                </ul>
+                <br><b>Why Visit Desert National Park?</b>
+                <br>!Because it’s a sanctuary for wildlife enthusiasts and nature lovers, offering a glimpse into the desert’s rich biodiversity!
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/GadisarLake.jpeg" alt="Gadisar Lake">
+            <h3>Gadisar Lake: The Serene Oasis</h3>
+            <p>
+                Gadisar Lake is an artificial lake surrounded by temples and ghats, offering a peaceful escape in the heart of Jaisalmer.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~It was built in the 14th century to provide water to the city!
+                <b>Things to Explore at Gadisar Lake:</b>
+                <ul>
+                    <li>
+                        The Boating Experience:
+                        <br>Enjoy a serene boat ride on the tranquil waters of the lake.
+                    </li>
+                    <li>
+                        The Temples:
+                        <br>Visit the ancient temples and shrines located around the lake.
+                    </li>
+                    <li>
+                        The Sunset Views:
+                        <br>Marvel at the stunning sunset views reflecting on the lake’s surface.
+                    </li>
+                    <li>
+                        The Local Markets:
+                        <br>Explore nearby markets for local handicrafts and souvenirs.
+                    </li>
+                    <li>
+                        The Cultural Events:
+                        <br>Experience cultural events and festivals celebrated around the lake.
+                    </li>
+                </ul>
+                <br><b>Why Visit Gadisar Lake?</b>
+                <br>!Because it’s a serene oasis offering tranquility, culture, and natural beauty amidst the desert landscape!
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/BadaBagh.jpeg" alt="Bada Bagh">
+            <h3>Bada Bagh: The Royal Cenotaphs</h3>
+            <p>
+                Bada Bagh is a complex of royal cenotaphs built in memory of the Maharajas of Jaisalmer, set against the backdrop of the desert landscape.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~It’s known for its stunning architecture and serene ambiance!
+                <b>Things to Explore at Bada Bagh:</b>
+                <ul>
+                    <li>
+                        The Cenotaphs:
+                        <br>Explore the intricately carved cenotaphs dedicated to the royal family.
+                    </li>
+                    <li>
+                        The Gardens:
+                        <br>Stroll through the beautifully landscaped gardens surrounding the cenotaphs.
+                    </li>
+                    <li>
+                        The Sunset Views:
+                        <br>Enjoy breathtaking sunset views over the desert landscape.
+                    </li>
+                    <li>
+                        The Local Culture:
+                        <br>Experience the local culture and traditions of the desert communities.
+                    </li>
+                    <li>
+                        The Photography Opportunities:
+                        <br>Capture stunning photographs of the cenotaphs and surrounding landscapes.
+                    </li>
+                </ul>
+                <br><b>Why Visit Bada Bagh?</b>
+                <br>!Because it’s a peaceful retreat offering a glimpse into the royal history and architectural beauty of Jaisalmer!
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/SalimSinghKiHaweli.jpg" alt="Salim Singh Ki Haveli">
+            <h3>Salim Singh Ki Haveli: The Peacock Palace</h3>
+            <p>
+                Salim Singh Ki Haveli is a stunning haveli known for its unique architecture and intricate carvings, resembling a peacock.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~It was built in the 18th century and is famous for its distinctive architecture!
+                <b>Things to Explore at Salim Singh Ki Haveli:</b>
+                <ul>
+                    <li>
+                        The Architecture:
+                        <br>Admire the unique peacock-shaped architecture and intricate carvings.
+                    </li>
+                    <li>
+                        The Courtyards:
+                        <br>Stroll through the beautiful courtyards surrounded by stunning architecture.
+                    </li>
+                    <li>
+                        The Local Artisans:
+                        <br>Meet local artisans showcasing their crafts and skills.
+                    </li>
+                    <li>
+                        The Cultural Performances:
+                        <br>Enjoy cultural performances held in the haveli premises.
+                    </li>
+                    <li>
+                        The Photography Opportunities:
+                        <br>Capture stunning photographs of the haveli’s unique architecture.
+                    </li>
+                </ul>
+                <br><b>Why Visit Salim Singh Ki Haveli?</b>
+                <br>!Because it’s a masterpiece of Rajasthani architecture and a glimpse into the opulent lifestyle of the royal families!
+            </p>
+        </div>
+    </div>
+    <footer class="footer">
+        Explore Bharat © 2025
+    </footer>
+</body>
+</html>

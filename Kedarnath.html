@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        #menu {
+            background: #000000;
+            height: 66px;
+            padding-right: 18px;
+            border-radius: 5px;
+        }
+        #menu ul, #menu li {
+            margin: 0 auto;
+            padding: 0;
+            list-style: none
+        }
+        #menu ul {
+            width: 100%;
+            text-align: right;
+            margin-top: 20px;
+        }
+        #menu li {
+            display: inline-block;
+            position: relative;
+        }
+        #menu a {
+            display: block;
+            line-height: 66px;
+            padding: 0 28px;
+            text-decoration: none;
+            color: #FFFFFF;
+            font-size: 17px;
+        }
+        #menu a.dropdown-arrow:after {
+            content: "\2B9F";
+            margin-left: 5px;
+        }
+        #menu li a:hover {
+            color: #09EFFF;
+            background: #000000;
+        }
+        #menu input {
+            display: none;
+            margin: 0;
+            padding: 0;
+            height: 66px;
+            width: 100%;
+            opacity: 0;
+            cursor: pointer
+        }
+        #menu label {
+            display: none;
+            line-height: 66px;
+            text-align: center;
+            position: absolute;
+            left: 35px
+        }
+        #menu label:before {
+            font-size: 1.6em;
+            color: #FFFFFF;
+            content: "\2261"; 
+            margin-left: 20px;
+        }
+        #menu ul.sub-menus{
+            height: auto;
+            overflow: hidden;
+            width: 170px;
+            background: #343434;
+            position: absolute;
+            z-index: 99;
+            display: none;
+        }
+        #menu ul.sub-menus li {
+            display: block;
+            text-align: left;
+            width: 100%;
+        }
+        #menu ul.sub-menus a {
+            color: #FFFFFF;
+            font-size: 15px;
+        }
+        #menu li:hover ul.sub-menus {
+            display: block
+        }
+        #menu ul.sub-menus a:hover{
+            background: #000000;
+            color: #09EFFF;
+        }
+        @media screen and (max-width: 800px){
+            #menu {position:relative}
+            #menu ul {background:#343434;position:absolute;top:100%;right:0;left:0;z-index:3;height:auto;display:none;text-align:left;}
+            #menu ul.sub-menus {width:100%;position:static;}
+            #menu ul.sub-menus a {padding-left:30px;}
+            #menu li {display:block;float:none;width:auto;}
+            #menu input, #menu label {position:absolute;top:0;left:0;display:block}
+            #menu input {z-index:4}
+            #menu input:checked + label {color:#FFFFFF}
+            #menu input:checked + label:before {content:"\00d7"}
+            #menu input:checked ~ ul {display:block}
+        }
+        .header img {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            margin-right: 690px;
+            margin-top: 10px;
+            margin-left: 25px;
+        }
+        .logo p {
+            color: #ffffff;
+        }
+        .header {
+            background-color: #000000;
+            display: flex;
+            flex: 6fr;
+            padding: 0 20px;
+        }
+        .logo {
+            display: grid;
+            grid: 2fr;
+            color: #ffffff;
+            width: 750px;
+            margin-left: 20px;
+        }
+        .hero {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 36px;
+      color: #09EFFF;
+      padding: 0;
+      margin: 0;
+    }
+
+     
+    .cards-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 40px;
+      justify-content: center;
+      align-items: center;
+      margin-left: 140px;
+      margin-right: 140px;
+      gap: 40px;
+    }
+    .place-card {
+      background-color: #1a1a1a;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(51, 153, 255, 0.2);
+      width: 600px;
+      height: 750px;
+      padding: 20px;
+      font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    .place-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px 12px 0 0;
+    }
+    .place-card h3 {
+      color: #09EFFF;
+      margin: 10px 0;
+    }
+    .place-card p {
+      color: #ffffff;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .footer {
+      background-color: #000000;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+    .place-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      margin: 0;
+      padding: 0;
+    }
+    </style>
+</head>
+<body>
+    <div class="header">  
+        <div class="logo">
+            <img src="Images/sample.jpg" alt="Logo">
+            <p>Explore Bharat</p>
+        </div>
+        <nav id='menu'>
+        <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+        <ul>
+            <li><a href='index.html'>Home</a></li>
+            <li><a href='About.html'>About</a></li>
+            <li><a href='Contact.html'>Contact Us</a></li>
+            <li><a href='HeritageSites.html'>Heritage Sites</a></li>
+            <li><a class='dropdown-arrow' href='ExploreStates.html'>Explore States</a>
+            <ul class='sub-menus'>
+                <li><a href='Maharashtra.html'>Maharashtra</a></li>
+                <li><a href='Rajasthan.html'>Rajasthan</a></li>
+                <li><a href='Goa.html'>Goa</a></li>
+                <li><a href='Uttarakhand.html'>Uttarakhand</a></li>
+                <li><a href='Punjab.html'>Punjab</a></li>
+                <li><a href='Delhi.html'>Delhi</a></li>
+                <li><a href='Gujrat.html'>Gujrat</a></li>
+            </ul>
+            </li>
+        </ul>
+        </nav>
+    </div>
+    <hr>
+      <section class="hero">
+      
+        <h2>Kedarnath</h2>
+        <p>~Sacred shrine of Lord Shiva in the Himalayas</p>
+      </section>
+         <div class="cards-section" id="heritage-cards">
+      <!-- Places to visit in Kedarnath -->
+        <div class="place-card">
+            <img src="Images/kedarnath temple.webp" alt="Kedarnath Temple">
+            <h3>Kedarnath Temple</h3>
+            <p>
+                Kedarnath Temple is one of the most revered Hindu shrines dedicated to Lord Shiva. It is part of the Char Dham pilgrimage and is located in the scenic town of Kedarnath.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~The temple is believed to be over 1,000 years old and is situated at an altitude of 3,583 meters!
+                <b>Things to Explore at Kedarnath Temple:</b>
+                <ul>
+                    <li>
+                        Spiritual Experience:
+                        <br>Participate in the morning and evening aarti (prayer ceremonies) for a divine experience.
+                    </li>
+                    <li>
+                        Bhairav Temple:
+                        <br>Visit the nearby Bhairav Temple, which offers stunning views of the Kedarnath Valley.
+                    </li>
+                    <li>
+                        Kedarnath Wildlife Sanctuary:
+                        <br>Explore the rich biodiversity of the sanctuary surrounding the temple.
+                    </li>
+                    <li>
+                        Scenic Trek:
+                        <br>Enjoy a trek to the temple through breathtaking landscapes and serene surroundings.
+                    </li>
+                </ul>
+                <br><b>Why Visit Kedarnath Temple?</b>
+                <br>!Because it’s not just a pilgrimage site but also a place of immense natural beauty and spiritual significance.
+            </p>
+        </div>
+            <div    class="place-card">
+            <img src="Images/kedarnath mountain.jpg" alt="Kedarnath Mountain">
+            <h3>Kedarnath Mountain</h3>     
+            <p>
+                Kedarnath Mountain, towering majestically over the temple, is a part of the majestic Garhwal Himalayas. It offers breathtaking views and is a popular trekking destination.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~The mountain is often shrouded in clouds, adding to its mystical aura!
+                <b>Things to Explore at Kedarnath Mountain:</b>
+                <ul>
+                    <li>
+                        Trekking Trails:
+                        <br>Embark on thrilling treks that lead to stunning viewpoints and serene landscapes.
+                    </li>
+                    <li>
+                        Photography:
+                        <br>Capture the mesmerizing beauty of the snow-capped peaks and lush valleys.
+                    </li>
+                    <li>
+                        Wildlife Spotting:
+                        <br>Keep an eye out for Himalayan wildlife, including rare species like the snow leopard.
+                    </li>
+                    <li>
+                        Meditation Spots:
+                        <br>Find tranquil spots for meditation amidst the serene surroundings.
+                    </li>
+                </ul>
+                <br><b>Why Visit Kedarnath Mountain?</b>
+                <br>!Because it’s not just a trek; it’s an adventure that connects you with nature and spirituality.    
+            </p>
+        </div>
+
+        <div class="place-card">
+            <img src="Images/kedarnath lake.jpg" alt="Kedarnath Lake">
+            <h3>Kedarnath Lake</h3>
+            <p>
+                Kedarnath Lake, also known as Gandhi Sarovar, is a serene glacial lake located near the Kedarnath Temple. It is surrounded by majestic mountains and offers a peaceful retreat.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~The lake is believed to have healing properties and is a popular spot for meditation!
+                <b>Things to Explore at Kedarnath Lake:</b>
+                <ul>
+                    <li>
+                        Scenic Walks:
+                        <br>Take leisurely walks around the lake and enjoy the breathtaking views.
+                    </li>
+                    <li>
+                        Meditation:
+                        <br>Find a quiet spot by the lake for meditation and reflection.
+                    </li>
+                    <li>
+                        Photography:
+                        <br>Capture the stunning reflections of the surrounding mountains in the crystal-clear waters.
+                    </li>
+                    <li>
+                        Wildlife Watching:
+                        <br>Observe various bird species that inhabit the area.
+                    </li>
+                </ul>
+                <br><b>Why Visit Kedarnath Lake?</b>
+                <br>!Because it’s a tranquil oasis that offers a perfect blend of natural beauty and spiritual serenity.
+            </p>    
+        </div>
+        <div
+            class="place-card">
+            <img src="Images/kedarnath view.jpg" alt="Kedarnath View">
+            <h3>Kedarnath View</h3>
+            <p>
+                The view from Kedarnath is nothing short of spectacular, with panoramic vistas of the surrounding mountains and valleys. It’s a photographer’s paradise and a place to soak in the natural beauty.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~The view changes dramatically with the seasons, offering a unique experience every time!
+                <b>Things to Explore at Kedarnath View:</b>
+                <ul>
+                    <li>
+                        Sunrise and Sunset:
+                        <br>Witness breathtaking sunrises and sunsets that paint the sky in vibrant colors.
+                    </li>
+                    <li>
+                        Photography:
+                        <br>Capture the stunning landscapes and the majestic Kedarnath Temple against the backdrop of the mountains.
+                    </li>
+                    <li>
+                        Stargazing:
+                        <br>Enjoy clear night skies perfect for stargazing away from city lights.
+                    </li>
+                    <li>
+                        Meditation:
+                        <br>Find a peaceful spot to meditate while surrounded by nature’s beauty.
+                    </li>
+                </ul>
+                <br><b>Why Visit Kedarnath View?</b>
+                <br>!Because it’s a place where nature’s grandeur meets spiritual tranquility, offering a truly unforgettable experience.
+            </p>
+        </div>
+            <div class="place-card">
+            <img src="Images/Interior Kedarnath-Temple.jpg" alt="Kedarnath Temple Interior">
+            <h3>Kedarnath Temple Interior</h3>                  
+
+
+            <p>
+                The interior of Kedarnath Temple is adorned with intricate carvings and ancient scriptures. It’s a place of deep spiritual significance and architectural beauty.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~The temple’s architecture reflects the unique style of ancient Himalayan temples!
+                <b>Things to Explore at Kedarnath Temple Interior:</b>
+                <ul>
+                    <li>
+                        Spiritual Atmosphere:
+                        <br>Experience the serene ambiance and participate in the daily rituals.
+                    </li>
+                    <li>
+                        Architectural Marvels:
+                        <br>Admire the intricate carvings and sculptures that adorn the temple walls.
+                    </li>
+                    <li>
+                        Historical Significance:
+                        <br>Learn about the temple’s rich history and its importance in Hindu mythology.
+                    </li>
+                    <li>
+                        Sacred Relics:
+                        <br>Explore the sacred relics and offerings made by devotees over the centuries.
+                    </li>
+                </ul>
+                <br><b>Why Visit Kedarnath Temple Interior?</b>
+                <br>!Because it’s not just a place of worship; it’s a journey through history, spirituality, and art.
+            </p>
+        </div>
+
+        <div class="place-card">
+            <img src="Images/kedarnath exterior.jpg" alt="Kedarnath Temple Exterior">
+            <h3>Kedarnath Temple Exterior</h3>
+            <p>
+                The exterior of Kedarnath Temple is a stunning example of ancient Himalayan architecture. It stands as a testament to the devotion and craftsmanship of the artisans who built it.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~The temple is built with large stone slabs and has a unique pyramid-shaped structure!
+                <b>Things to Explore at Kedarnath Temple Exterior:</b>
+                <ul>
+                    <li>
+                        Architectural Beauty:
+                        <br>Marvel at the intricate stone carvings and the grand entrance of the temple.
+                    </li>
+                    <li>
+                        Scenic Surroundings:
+                        <br>Enjoy the breathtaking views of the surrounding mountains and valleys.
+                    </li>
+                    <li>
+                        Pilgrimage Experience:
+                        <br>Witness the devotion of pilgrims who come from all over India to seek blessings.
+                    </li>
+                    <li>
+                        Cultural Significance:
+                        <br>Learn about the temple’s role in Hindu culture and its historical importance.
+                    </li>
+                </ul>
+                <br><b>Why Visit Kedarnath Temple Exterior?</b>
+                <br>!Because it’s not just a temple; it’s a symbol of faith, resilience, and architectural brilliance.
+            </p>
+        </div>
+        <div
+            class="place-card">
+            <img src="Images/kedarnath staue.jpg" alt="Kedarnath Temple Statue">
+            <h3>Kedarnath Temple Statue</h3>
+            <p>
+                The Kedarnath Temple features a magnificent statue of Nandi, the sacred bull of Lord Shiva, which is a significant part of the temple’s architecture.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~The statue is made of black stone and is intricately carved with detailed designs!
+                <b>Things to Explore at Kedarnath Temple Statue:</b>
+                <ul>
+                    <li>
+                        Symbol of Devotion:
+                        <br>Learn about the significance of Nandi in Hindu mythology and its connection to Lord Shiva.
+                    </li>
+                    <li>
+                        Artistic Details:
+                        <br>Admire the intricate carvings and craftsmanship that went into creating the statue.
+                    </li>
+                    <li>
+                        Spiritual Connection:
+                        <br>Feel the spiritual energy that surrounds this sacred symbol of devotion.
+                    </li>
+                    <li>
+                        Photography:
+                        <br>Capture the beauty of the statue against the backdrop of the majestic Kedarnath Temple.
+                    </li>
+                </ul>
+                <br><b>Why Visit Kedarnath Temple Statue?</b>
+                <br>!Because it’s not just a statue; it’s a representation of faith, artistry, and spiritual significance.
+            </p>
+        </div>
+         <div class="place-card">
+            <img src="Images/kedarnath entrance.cms" alt="Kedarnath Temple Entrance">
+            <h3>Kedarnath Temple Entrance</h3>
+            <p>
+                The entrance of Kedarnath Temple is a grand structure adorned with intricate carvings and sculptures. It serves as a gateway to the sacred shrine and is a sight to behold.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~The entrance is decorated with beautiful motifs and carvings that tell stories from Hindu mythology!
+                <b>Things to Explore at Kedarnath Temple Entrance:</b>
+                <ul>
+                    <li>
+                        Architectural Splendor:
+                        <br>Marvel at the detailed carvings and the grandeur of the temple entrance.
+                    </li>
+                    <li>
+                        Spiritual Significance:
+                        <br>Experience the spiritual energy that emanates from this sacred gateway.
+                    </li>
+                    <li>
+                        Cultural Heritage:
+                        <br>Learn about the historical significance of the temple entrance in Hindu culture.
+                    </li>
+                    <li>
+                        Photography Opportunities:
+                        <br>Capture stunning photographs of the entrance against the backdrop of the majestic mountains.
+                    </li>
+                </ul>
+                <br><b>Why Visit Kedarnath Temple Entrance?</b>
+                <br>!Because it’s not just an entrance; it’s a symbol of faith, artistry, and cultural heritage.
+            </p>
+        </div>
+
+        <div class="place-card">
+            <img src="Images/kedarnath path.avif" alt="Kedarnath Temple Path">
+            <h3>Kedarnath Temple Path</h3>
+            <p>
+                The path leading to Kedarnath Temple is a scenic trek that offers breathtaking views of the surrounding mountains and valleys. It’s a journey that combines spirituality with natural beauty.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~The path is lined with ancient stone steps and offers stunning vistas at every turn!
+                <b>Things to Explore at Kedarnath Temple Path:</b>
+                <ul>
+                    <li>
+                        Scenic Trekking:
+                        <br>Enjoy the picturesque landscapes and the serene atmosphere along the trek.
+                    </li>
+                    <li>
+                        Spiritual Journey:
+                        <br>Experience the spiritual energy as you make your way to the sacred shrine.
+                    </li>
+                    <li>
+                        Wildlife Spotting:
+                        <br>Keep an eye out for Himalayan wildlife along the path.
+                    </li>
+                    <li>
+                        Photography:
+                        <br>Capture the stunning views and the beauty of nature along the way.
+                    </li>
+                </ul>
+                <br><b>Why Visit Kedarnath Temple Path?</b>
+                <br>!Because it’s not just a path; it’s a spiritual journey through nature’s grandeur.
+            </p>
+         </div>
+          </div>
+    <footer class="footer">
+        Explore Bharat © 2025
+    </footer>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+            

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Humayun’s Tomb - Explore Bharat</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url(' https://upload.wikimedia.org/wikipedia/commons/d/d2/Tomb_of_Humayun%2C_Delhi.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.75);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #09EFFF;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .location {
+      text-align: center;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    .hero-img {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .hero-img img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #09EFFF;
+    }
+
+    .description, .features, .info-section {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      color: #e0e0e0;
+      text-align: justify;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      margin: 20px 0 10px;
+      color: #09EFFF;
+      font-weight: bold;
+    }
+
+    .gallery-title {
+      font-size: 1.8rem;
+      color: #09EFFF;
+      margin-bottom: 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s;
+      border: 2px solid #444;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #bbb;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+      .description, .features, .info-section {
+        font-size: 1rem;
+      }
+    }
+
+    .highlight {
+      color: #09EFFF;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <div class="container">
+      <h1>Humayun’s Tomb</h1>
+      <div class="location">📍 Delhi, India</div>
+
+      <div class="hero-img">
+        <img src="https://s7ap1.scene7.com/is/image/incredibleindia/humayuns-tomb-delhi-1-attr-hero?qlt=82&ts=1742197608302 " alt="Humayun’s Tomb" />
+      </div>
+
+      <div class="description">
+        <span class="highlight">Humayun’s Tomb</span>, located in the capital city of Delhi, is one of the finest examples of Mughal architecture in India. Commissioned by <span class="highlight">Empress Bega Begum</span> in 1570 in memory of her husband, Emperor Humayun, it was the first garden-tomb on the Indian subcontinent and inspired major architectural innovations, including the iconic <span class="highlight">Taj Mahal</span>.
+        <br /><br />
+        Designed by Persian architect <span class="highlight">Mirak Mirza Ghiyas</span>, the tomb is notable for its <span class="highlight">charbagh</span> (four-part Persian-style garden), grand red sandstone facade, intricate white marble inlays, and symmetrical layouts. It reflects a perfect fusion of Persian, Turkish, and Indian architectural styles.
+        <br /><br />
+        Listed as a <span class="highlight">UNESCO World Heritage Site</span> in 1993, the site includes several monuments such as the <span class="highlight">Isa Khan's Tomb</span>, <span class="highlight">Barber's Tomb</span>, and other royal Mughal graves. Humayun’s Tomb is not only an architectural marvel but also a significant cultural and historical symbol of the Mughal era.
+      </div>
+
+      <div class="features">
+        <div class="section-title">Key Highlights:</div>
+        <ul>
+          <li><strong>UNESCO Status:</strong> Declared World Heritage Site in 1993</li>
+          <li><strong>Built:</strong> Commissioned in 1569–70 by Empress Bega Begum</li>
+          <li><strong>Architectural Style:</strong> Persian-Islamic-Mughal fusion</li>
+          <li><strong>Significance:</strong> First garden-tomb in India, precursor to Taj Mahal</li>
+          <li><strong>Material:</strong> Red sandstone and white marble inlay</li>
+          <li><strong>Other Monuments:</strong> Isa Khan's Tomb, Arab Serai, Barber's Tomb</li>
+        </ul>
+      </div>
+
+      <div class="info-section">
+        <div class="section-title">Visitor Information:</div>
+        <p><strong>Opening Hours:</strong> 6:00 AM – 6:00 PM (Open all days)</p>
+        <p><strong class="highlight">Entry Fee:</strong> ₹30 (Indians), ₹500 (Foreigners)</p>
+        <p><strong class="highlight">Best Time to Visit:</strong> November to February for cooler weather</p>
+        <p><strong class="highlight">How to Reach:</strong> Nearest metro station is JLN Stadium or Hazrat Nizamuddin railway station</p>
+        <p><strong class="highlight">Tips:</strong> Visit during morning or sunset hours for the best light; carry a camera</p>
+      </div>
+
+      <div class="gallery-title">Image Gallery</div>
+      <div class="gallery">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ0pNw2Qq_Lm90NO0UC-A7GxVXUYwiZl_Nsw&s " alt="Main Tomb Front View" />
+        <img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ74RqAVDfvSSTXuGS4DqDA87Yeu1fce37j8A&s" alt="Garden Pathway" />
+        <img src="https://kaarwan.s3.amazonaws.com/public/blog/media/1/humayuns-tomb-3_1737197579867.png " alt="Detailed Inlay Work" />
+        <img src="https://islamicarchitectureinindia.weebly.com/uploads/1/3/8/3/13832295/6227817_orig.jpg " alt="Inside View" />
+        <img src="https://live.staticflickr.com/2551/3991640682_1a30e438f4_b.jpg " alt="Isa Khan's Tomb" />
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUbQBSezNrIueTXPBJQXM_SF9QU2MSIzRCgg&s " alt="Arial View" />
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2025 Explore Bharat. All rights reserved.
+    </footer>
+  </div>
+</body>
+</html>

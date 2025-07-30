@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Red Fort - Explore Bharat</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://www.shutterstock.com/shutterstock/photos/1199337631/display_1500/stock-photo-red-fort-delhi-india-with-india-flag-flying-high-1199337631.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.75);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #09EFFF;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .location {
+      text-align: center;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    .hero-img {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .hero-img img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #09EFFF;
+    }
+
+    .description, .features, .info-section {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      color: #e0e0e0;
+      text-align: justify;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      margin: 20px 0 10px;
+      color: #09EFFF;
+      font-weight: bold;
+    }
+
+    .gallery-title {
+      font-size: 1.8rem;
+      color: #09EFFF;
+      margin-bottom: 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s;
+      border: 2px solid #444;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #bbb;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+      .description, .features, .info-section {
+        font-size: 1rem;
+      }
+    }
+
+    .highlight {
+      color: #09EFFF;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <div class="container">
+      <h1>Red Fort</h1>
+      <div class="location">📍 Delhi, India</div>
+
+      <div class="hero-img">
+        <img src="https://cdn.britannica.com/20/189820-050-D650A54D/Red-Fort-Old-Delhi-India.jpg" alt="Red Fort" />
+      </div>
+
+      <div class="description">
+        The <span class="highlight">Red Fort</span>, or <span class="highlight">Lal Qila</span>, is a majestic historical fortification located in the heart of Old Delhi. Built in <span class="highlight">1648</span> by the Mughal Emperor Shah Jahan, it served as the main residence of the Mughal dynasty for around 200 years.
+        <br /><br />
+        Crafted from stunning <span class="highlight">red sandstone</span>, this iconic structure is a symbol of India’s rich past and architectural brilliance. With towering walls, beautifully ornamented gates, and detailed marble work, it reflects the grandeur of Mughal design. The fort's planning combines Islamic, Persian, Timurid, and Indian architectural elements, creating a harmonious masterpiece.
+        <br /><br />
+        Every year, on <span class="highlight">India's Independence Day</span>, the Prime Minister hoists the national flag here, making it a powerful national symbol. Inside the fort complex, visitors can explore beautiful gardens, the Diwan-i-Aam (Hall of Public Audience), Diwan-i-Khas (Hall of Private Audience), museums, and former royal chambers.
+        <br /><br />
+        Today, the Red Fort stands not only as a historical site but also as a <span class="highlight">UNESCO World Heritage Site</span> that captures the spirit of India’s cultural and political evolution. Walking through its vast corridors and intricate halls, one can feel the echoes of history and the grandeur of India’s past.
+      </div>
+
+      <div class="features">
+        <div class="section-title">Key Features:</div>
+        <ul>
+          <li><strong>Construction Year:</strong> <span class="highlight">1648</span></li>
+          <li><strong>Built By:</strong> <span class="highlight">Shah Jahan</span></li>
+          <li><strong>Architecture:</strong> Fusion of Mughal, Persian, and Indian styles</li>
+          <li><strong>Material:</strong> Red sandstone and white marble inlays</li>
+          <li><strong>Main Attractions:</strong> Lahori Gate, Moti Masjid, Rang Mahal, Mumtaz Mahal</li>
+        </ul>
+      </div>
+
+      <div class="info-section">
+        <div class="section-title">Visitor Information:</div>
+        <p><strong>Opening Hours:</strong> 9:30 AM – 4:30 PM (Closed on Mondays)</p>
+        <p><strong class="highlight">Entry Fee:</strong><br />
+          Indian Citizens: ₹35<br />
+          Foreign Tourists: ₹500
+        </p>
+        <p><strong class="highlight">Best Time to Visit:</strong> October to March for comfortable weather</p>
+        <p><strong class="highlight">How to Reach:</strong> Easily accessible by Delhi Metro (Chandni Chowk or Red Fort station), taxi, or bus services.</p>
+      </div>
+
+      <div class="gallery-title">Image Gallery</div>
+      <div class="gallery">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa7nfHrqJFAEa8I5C1NnXcLovtMG2qgpQchw&s" alt="Red Fort View 1" />
+        <img src="https://c8.alamy.com/comp/2BDGY2Y/red-fort-wall-in-new-delhi-india-aerial-drone-view-2BDGY2Y.jpg" alt="Red Fort View 2" />
+        <img src="https://images.squarespace-cdn.com/content/v1/56c13cc00442627a08632989/1460923657287-39BGPRUJ9F0STK0I2I0U/7hammam+Ghulam_Ali_Khan_020c.jpg?format=1500w" alt="Red Fort Interior" />
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXK1JZ1TwAb1I8suGC_c4y6uZghgUZmJSZWA&s" alt="Red Fort Gardens" />
+        <img src="https://etimg.etb2bimg.com/photo/93343457.cms" alt="Red Fort Sunset" />
+        <img src="https://kevinstandagephotography.wordpress.com/wp-content/uploads/2019/04/ksp_2826.jpg?w=1024" alt="Red Fort Architecture" />
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2025 Explore Bharat. All rights reserved.
+    </footer>
+  </div>
+</body>
+</html>

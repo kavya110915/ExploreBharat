@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kaziranga National Park - Explore Bharat</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMUa3bHyhC0gRDclFh3hk4mImwefe_IqzApQ&s') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.75);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #09EFFF;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .location {
+      text-align: center;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    .hero-img {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .hero-img img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #09EFFF;
+    }
+
+    .description, .features, .info-section {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      color: #e0e0e0;
+      text-align: justify;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      margin: 20px 0 10px;
+      color: #09EFFF;
+      font-weight: bold;
+    }
+
+    .gallery-title {
+      font-size: 1.8rem;
+      color: #09EFFF;
+      margin-bottom: 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s;
+      border: 2px solid #444;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #bbb;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+      .description, .features, .info-section {
+        font-size: 1rem;
+      }
+    }
+
+    .highlight {
+      color: #09EFFF;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <div class="container">
+      <h1>Kaziranga National Park</h1>
+      <div class="location">📍 Assam, India</div>
+
+      <div class="hero-img">
+        <img src="https://nagaon.assam.gov.in/sites/default/files/inline-images/gate.JPG" alt="Kaziranga National Park" />
+      </div>
+
+      <div class="description">
+        <span class="highlight">Kaziranga National Park</span> is a UNESCO World Heritage Site located in the Indian state of Assam. Renowned for its successful conservation of the <span class="highlight">Great Indian One-Horned Rhinoceros</span>, Kaziranga spans across the floodplains of the Brahmaputra River and is home to a stunning diversity of wildlife.
+        <br /><br />
+        The park's landscape features tall elephant grass, marshland, and dense tropical forests, making it a haven for not just rhinos, but also for <span class="highlight">tigers</span>, <span class="highlight">elephants</span>, <span class="highlight">wild buffaloes</span>, and <span class="highlight">swamp deer</span>. It's also recognized as an <span class="highlight">Important Bird Area (IBA)</span> by BirdLife International due to its rich avian population including storks, pelicans, and eagles.
+        <br /><br />
+        A visit to Kaziranga offers thrilling <span class="highlight">jeep safaris</span> and <span class="highlight">elephant-back rides</span> through the grasslands where wildlife roams freely. The park’s careful management and anti-poaching measures have made it a model for wildlife conservation in India.
+        <br /><br />
+        The best time to experience its vibrant ecosystem is during the winter months, when the weather is pleasant and animals are easily spotted. A trip to Kaziranga is not just a safari, it’s a journey into the wild heart of India.
+      </div>
+
+      <div class="features">
+        <div class="section-title">Key Features:</div>
+        <ul>
+          <li><strong>Established:</strong> <span class="highlight">1905 as a reserve, 1974 as a national park</span></li>
+          <li><strong>Area:</strong> <span class="highlight">~430 square kilometers</span></li>
+          <li><strong>Famous For:</strong> Largest population of One-Horned Rhinoceroses</li>
+          <li><strong>Also Home To:</strong> Tigers, Elephants, Wild Boars, Leopards, and Migratory Birds</li>
+        </ul>
+      </div>
+
+      <div class="info-section">
+        <div class="section-title">Visitor Information:</div>
+        <p><strong>Opening Season:</strong> November to April (closed during monsoon)</p>
+        <p><strong class="highlight">Safari Timings:</strong><br />
+          Morning: 7:30 AM – 9:30 AM<br />
+          Afternoon: 1:30 PM – 3:30 PM
+        </p>
+        <p><strong class="highlight">Entry Fee:</strong><br />
+          Indian Citizens: ₹100<br />
+          Foreign Tourists: ₹650
+        </p>
+        <p><strong class="highlight">How to Reach:</strong> Nearest airport is in Jorhat (~96 km). Accessible by road from Guwahati and Tezpur.</p>
+      </div>
+
+      <div class="gallery-title">Image Gallery</div>
+      <div class="gallery">
+        <img src="https://www.kaziranganationalpark-india.com/info/images/indian-rhino.jpg" alt="Kaziranga Rhino" />
+        <img src="https://www.kaziranganationalpark-india.com/images/jeep-safari-kaziranga-park.jpg" alt="Kaziranga Safari" />
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9w4dRqqB_be9T8_hoPkaNv4RAIaQQ1finXg&s" alt="Kaziranga Elephants" />
+        <img src="https://www.travelescape.in/wp-content/uploads/2021/05/Kaziranga-Landscape.jpg" alt="Kaziranga Landscape" />
+        <img src="https://i0.wp.com/kaziranganationalparkassam.in/wp-content/uploads/2020/08/19642692_1367861333299421_7848124325131637351_n.jpg?resize=648%2C458&ssl=1" alt="Bird Watching in Kaziranga" />
+        <img src="https://www.tigersafariindia.com/wp-content/uploads/2023/11/elephants-playing-in-kaziranga-national-park.jpg" alt="Kaziranga Wildlife" />
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2025 Explore Bharat. All rights reserved.
+    </footer>
+  </div>
+</body>
+</html>

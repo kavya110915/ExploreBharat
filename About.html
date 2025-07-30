@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        #menu {
+            background: #000000;
+            height: 66px;
+            padding-right: 18px;
+            border-radius: 5px;
+        }
+        #menu ul, #menu li {
+            margin: 0 auto;
+            padding: 0;
+            list-style: none
+        }
+        #menu ul {
+            width: 100%;
+            text-align: right;
+            margin-top: 20px;
+        }
+        #menu li {
+            display: inline-block;
+            position: relative;
+            margin-right: 30px;
+        }
+        #menu a {
+            display: block;
+            line-height: 66px;
+            padding: 0 13.5px;
+            text-decoration: none;
+            color: #FFFFFF;
+            font-size: 17px;
+        }
+        #menu a.dropdown-arrow:after {
+            content: "\2B9F";
+            margin-left: 5px;
+        }
+        #menu li a:hover {
+            color: #09EFFF;
+            background: #000000;
+        }
+        #menu input {
+            display: none;
+            margin: 0;
+            padding: 0;
+            height: 66px;
+            width: 100%;
+            opacity: 0;
+            cursor: pointer
+        }
+        #menu label {
+            display: none;
+            line-height: 66px;
+            text-align: center;
+            position: absolute;
+            left: 35px
+        }
+        #menu label:before {
+            font-size: 1.6em;
+            color: #FFFFFF;
+            content: "\2261"; 
+            margin-left: 20px;
+        }
+        #menu ul.sub-menus{
+            height: auto;
+            overflow: hidden;
+            width: 170px;
+            background: #343434;
+            position: absolute;
+            z-index: 99;
+            display: none;
+        }
+        #menu ul.sub-menus li {
+            display: block;
+            text-align: left;
+            width: 100%;
+        }
+        #menu ul.sub-menus a {
+            color: #FFFFFF;
+            font-size: 15px;
+        }
+        #menu li:hover ul.sub-menus {
+            display: block
+        }
+        #menu ul.sub-menus a:hover{
+            background: #000000;
+            color: #09EFFF;
+        }
+        @media screen and (max-width: 800px){
+            #menu {position:relative}
+            #menu ul {background:#343434;position:absolute;top:100%;right:0;left:0;z-index:3;height:auto;display:none;text-align:left;}
+            #menu ul.sub-menus {width:100%;position:static;}
+            #menu ul.sub-menus a {padding-left:30px;}
+            #menu li {display:block;float:none;width:auto;}
+            #menu input, #menu label {position:absolute;top:0;left:0;display:block}
+            #menu input {z-index:4}
+            #menu input:checked + label {color:#FFFFFF}
+            #menu input:checked + label:before {content:"\00d7"}
+            #menu input:checked ~ ul {display:block}
+        }
+        img {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            margin-right: 690px;
+            margin-top: 10px;
+            margin-left: 25px;
+        }
+        .logo p {
+            color: #ffffff;
+        }
+        .header {
+            background-color: #000000;
+            display: flex;
+            flex: 6fr;
+            padding: 0 20px;
+        }
+        .logo {
+            display: grid;
+            grid: 2fr;
+            color: #ffffff;
+            width: 750px;
+            margin-left: 20px;
+        }
+        .about-section {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #ffffff;
+}
+
+.card {
+  background-color: #364145;
+  padding: 25px;
+  margin-bottom: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(181, 255, 255, 0.1);
+}
+
+.card h2 {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+}
+
+.card p {
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.highlight {
+  color: #00ffff; /* Light cyan blue */
+  font-weight: 600;
+}
+    </style>
+</head>
+<body>
+    <div class="header">  
+        <div class="logo">
+            <img src="Images/sample.jpg" alt="Logo">
+            <p>Explore Bharat</p>
+        </div>
+        <nav id='menu'>
+        <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+        <ul>
+            <li><a href='index.html'>Home</a></li>
+            <li><a href='About.html'>About</a></li>
+            <li><a href='Contact.html'>Contact Us</a></li>
+            <li><a href='HeritageSites.html'>Heritage Sites</a></li>
+            <li><a class='dropdown-arrow' href='ExploreStates.html'>Explore States</a>
+            <ul class='sub-menus'>
+                <li><a href='Maharashtra.html'>Maharashtra</a></li>
+                <li><a href='Rajasthan.html'>Rajasthan</a></li>
+                <li><a href='Goa.html'>Goa</a></li>
+                <li><a href='Uttarakhand.html'>Uttarakhand</a></li>
+                <li><a href='Punjab.html'>Punjab</a></li>
+                <li><a href='Delhi.html'>Delhi</a></li>
+                <li><a href='Gujrat.html'>Gujrat</a></li>
+            </ul>
+            </li>
+        </ul>
+        </nav>
+    </div>
+    <hr>
+      <section class="hero">
+    <section class="about-section">
+    <h1 class="section-title">About <span class="highlight">Us</span></h1>
+
+    <div class="card">
+      <h2>About <span class="highlight">Explore Bharat</span></h2>
+      <p>
+        India is a land of timeless heritage, where every monument tells a story and every city carries centuries of tradition. Explore Bharat is a project built to highlight the <span class="highlight">Rich Cultural </span>and <span class="highlight">Historical Sites</span> across the nation—from <span class="highlight">Ancient Temples</span> and grand <span class="highlight">Forts</span> to <span class="highlight">UNESCO World Heritage Sites</span>. Our goal is to make history come alive through detailed information, captivating visuals, and a simple, user-friendly experience.
+        </p>This website is designed to help <span class="highlight">Students, Tourists, and History lovers</span> discover the beauty of <span class="highlight">India’s heritage</span>. With <span class="highlight">Photographs, Historical Facts, and Region-wise Categorization</span>, Explore Bharat serves as a digital guide to India’s incredible legacy—encouraging pride, learning, and preservation of our national treasures.
+
+
+        <p>From the <span class="highlight">Snow-Capped Himalayas</span> to the golden sands of <span class="highlight">Rajasthan</span>, from the <span class="highlight">Ancient Temples </span>to <span class="highlight">Tamil Nadu</span> to the colonial charm of <span class="highlight">Goa </span>– we help you uncover India’s incredible diversity with ease and confidence.
+
+So whether you're planning a spiritual pilgrimage, a heritage walk, a culinary trail, or an adventure-packed road trip, our platform ensures you have everything you need, in one place.
+
+        </p>
+    </div>
+
+    <div class="card">
+      <h2>Why <span class="highlight">Choose Us</span></h2>
+      <p>Our website is a comprehensive digital platform crafted exclusively for travelers and explorers who wish to dive deep into the rich Heritage, Diverse Culture, and Breathtaking Beauty of Incredible India. Whether you're a first-time visitor or a seasoned traveler, we offer a one-stop destination to discover the hidden gems, historical landmarks, and cultural treasures across the country.
+<br>
+With a clean, user-friendly interface, we make it effortless for you to:<br>
+<span class="highlight">~</span>Explore the Indian Heritage Sites<br>
+<span class="highlight">~</span>Explore different states : Explore different cities<br>
+<span class="highlight">~</span>Pay online for the tickets instead of standing in the queue<br>
+<span class="highlight">~</span>Explore the local food<br>
+<span class="highlight">~</span>Explore restaurants in the city<br>
+<span class="highlight">~</span>Upload a travel blog by logging in<br>
+<span class="highlight">~</span>Follow these local tips<br>
+       </p>
+    </div>
+  </section>
+</body>
+</html>

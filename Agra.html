@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agra Fort - Explore Bharat</title>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/09/01/08/32/agra-fort.jpg?w=900&h=500&s=1') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.75);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #09EFFF;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .location {
+      text-align: center;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    .hero-img {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .hero-img img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #09EFFF;
+    }
+
+    .description, .features, .info-section {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      color: #e0e0e0;
+      text-align: justify;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      margin: 20px 0 10px;
+      color: #09EFFF;
+      font-weight: bold;
+    }
+
+    .gallery-title {
+      font-size: 1.8rem;
+      color: #09EFFF;
+      margin-bottom: 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s;
+      border: 2px solid #444;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #bbb;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+      .description, .features, .info-section {
+        font-size: 1rem;
+      }
+    }
+
+    .highlight {
+      color: #09EFFF;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <div class="container">
+      <h1>Agra Fort</h1>
+      <div class="location">📍 Agra, Uttar Pradesh</div>
+
+      <div class="hero-img">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/09/01/08/32/agra-fort.jpg?w=900&h=500&s=1 " alt="Agra Fort" />
+      </div>
+
+      <div class="description">
+        <p>The <span class="highlight">Agra Fort</span> is a monumental fortification built primarily of red sandstone, located in Agra, Uttar Pradesh. This UNESCO World Heritage Site served as the main residence of the Mughal emperors until 1638 before the capital shifted to Delhi. It is a perfect blend of military might and architectural splendor.</p>
+
+        <p>Commissioned by <span class="highlight">Emperor Akbar</span> in 1565, the fort was later enhanced by Shah Jahan, who added exquisite marble palaces and gardens. The fort’s layout is semicircular along the Yamuna River, featuring massive walls that stretch over 2.5 kilometers in circumference.</p>
+
+        <p>The Agra Fort comprises several magnificent structures, including the <span class="highlight">Diwan-i-Am</span> (Hall of Public Audience), <span class="highlight">Diwan-i-Khas</span> (Hall of Private Audience), and the <span class="highlight">Moti Masjid</span> (Pearl Mosque). These buildings showcase a unique mix of Persian, Indian, and Islamic architectural styles.</p>
+
+        <p>One of the most famous spots within the fort is the <span class="highlight">Musamman Burj</span>, where Shah Jahan was imprisoned by his son Aurangzeb. From here, he spent his final years gazing at the Taj Mahal, the monument he built for his beloved wife, Mumtaz Mahal.</p>
+
+        <p>Today, the Agra Fort stands as a historical jewel, attracting tourists from around the world. It not only narrates tales of Mughal grandeur but also serves as a symbol of India's rich cultural heritage.</p>
+      </div>
+
+      <div class="features">
+        <div class="section-title">Key Highlights:</div>
+        <ul>
+          <li><strong>Built by:</strong> Emperor Akbar (1565)</li>
+          <li><strong>Architecture:</strong> Mughal style with red sandstone and marble</li>
+          <li><strong>Main Structures:</strong> Diwan-i-Am, Diwan-i-Khas, Moti Masjid</li>
+          <li><strong>UNESCO Status:</strong> World Heritage Site (1983)</li>
+          <li><strong>Location:</strong> Along the Yamuna River in Agra</li>
+        </ul>
+      </div>
+
+      <div class="info-section">
+        <div class="section-title">Visitor Information:</div>
+        <p><strong>Opening Hours:</strong> 6:00 AM – 6:00 PM</p>
+        <p><strong class="highlight">Entry Fee:</strong> ₹50 for Indian citizens, ₹650 for foreign tourists</p>
+        <p><strong class="highlight">Best Time to Visit:</strong> November to March for pleasant weather</p>
+        <p><strong class="highlight">Tip:</strong> Combine your visit with the Taj Mahal, located just 2.5 km away.</p>
+      </div>
+
+      <div class="gallery-title">Image Gallery</div>
+      <div class="gallery">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Agra_Fort-Walls_and_left_ditch-20131018.jpg/1024px-Agra_Fort-Walls_and_left_ditch-20131018.jpg " alt="Agra Fort Walls" />
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpOHiONhE9vvFLUPFNsE3mqzMRC_i6VUooBw&s " alt="Diwan-i-Am" />
+        <img src=" https://www.rajasthanbhumitours.com/blog/wp-content/uploads/2024/08/Moti-Masjid-The-Pearl-Mosque-of-Agra-Fort.jpg" alt="Moti Masjid" />
+        <img src="https://im.hunt.in/cg/Agra/City-Guide/musamman-agra.jpg " alt="Musamman Burj" />
+        <img src=" https://www.tajmahal.gov.in/images/gallery/agra-fort/1.jpg" alt="Agra Fort Gates" />
+        <img src=" https://ucarecdn.com/2f1c5d0f-02a0-4268-8702-1d93feffb806/" alt="Agra Fort Interior" />
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2025 Explore Bharat. All rights reserved.
+    </footer>
+  </div>
+</body>
+</html>

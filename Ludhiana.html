@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        #menu {
+            background: #000000;
+            height: 66px;
+            padding-right: 18px;
+            border-radius: 5px;
+        }
+        #menu ul, #menu li {
+            margin: 0 auto;
+            padding: 0;
+            list-style: none
+        }
+        #menu ul {
+            width: 100%;
+            text-align: right;
+            margin-top: 20px;
+        }
+        #menu li {
+            display: inline-block;
+            position: relative;
+        }
+        #menu a {
+            display: block;
+            line-height: 66px;
+            padding: 0 28px;
+            text-decoration: none;
+            color: #FFFFFF;
+            font-size: 17px;
+        }
+        #menu a.dropdown-arrow:after {
+            content: "\2B9F";
+            margin-left: 5px;
+        }
+        #menu li a:hover {
+            color: #09EFFF;
+            background: #000000;
+        }
+        #menu input {
+            display: none;
+            margin: 0;
+            padding: 0;
+            height: 66px;
+            width: 100%;
+            opacity: 0;
+            cursor: pointer
+        }
+        #menu label {
+            display: none;
+            line-height: 66px;
+            text-align: center;
+            position: absolute;
+            left: 35px
+        }
+        #menu label:before {
+            font-size: 1.6em;
+            color: #FFFFFF;
+            content: "\2261"; 
+            margin-left: 20px;
+        }
+        #menu ul.sub-menus{
+            height: auto;
+            overflow: hidden;
+            width: 170px;
+            background: #343434;
+            position: absolute;
+            z-index: 99;
+            display: none;
+        }
+        #menu ul.sub-menus li {
+            display: block;
+            text-align: left;
+            width: 100%;
+        }
+        #menu ul.sub-menus a {
+            color: #FFFFFF;
+            font-size: 15px;
+        }
+        #menu li:hover ul.sub-menus {
+            display: block
+        }
+        #menu ul.sub-menus a:hover{
+            background: #000000;
+            color: #09EFFF;
+        }
+        @media screen and (max-width: 800px){
+            #menu {position:relative}
+            #menu ul {background:#343434;position:absolute;top:100%;right:0;left:0;z-index:3;height:auto;display:none;text-align:left;}
+            #menu ul.sub-menus {width:100%;position:static;}
+            #menu ul.sub-menus a {padding-left:30px;}
+            #menu li {display:block;float:none;width:auto;}
+            #menu input, #menu label {position:absolute;top:0;left:0;display:block}
+            #menu input {z-index:4}
+            #menu input:checked + label {color:#FFFFFF}
+            #menu input:checked + label:before {content:"\00d7"}
+            #menu input:checked ~ ul {display:block}
+        }
+        .header img {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            margin-right: 690px;
+            margin-top: 10px;
+            margin-left: 25px;
+        }
+        .logo p {
+            color: #ffffff;
+        }
+        .header {
+            background-color: #000000;
+            display: flex;
+            flex: 6fr;
+            padding: 0 20px;
+        }
+        .logo {
+            display: grid;
+            grid: 2fr;
+            color: #ffffff;
+            width: 750px;
+            margin-left: 20px;
+        }
+        .hero {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 36px;
+      color: #09EFFF;
+      padding: 0;
+      margin: 0;
+    }
+
+     
+    .cards-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 40px;
+      justify-content: center;
+      align-items: center;
+      margin-left: 140px;
+      margin-right: 140px;
+      gap: 40px;
+    }
+    .place-card {
+      background-color: #1a1a1a;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(51, 153, 255, 0.2);
+      width: 600px;
+      height: 750px;
+      padding: 20px;
+      font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    .place-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px 12px 0 0;
+    }
+    .place-card h3 {
+      color: #09EFFF;
+      margin: 10px 0;
+    }
+    .place-card p {
+      color: #ffffff;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .footer {
+      background-color: #000000;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+    .place-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      margin: 0;
+      padding: 0;
+    }
+    </style>
+</head>
+<body>
+    <div class="header">  
+        <div class="logo">
+            <img src="Images/sample.jpg" alt="Logo">
+            <p>Explore Bharat</p>
+        </div>
+        <nav id='menu'>
+        <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+        <ul>
+            <li><a href='index.html'>Home</a></li>
+            <li><a href='About.html'>About</a></li>
+            <li><a href='Contact.html'>Contact Us</a></li>
+            <li><a href='HeritageSites.html'>Heritage Sites</a></li>
+            <li><a class='dropdown-arrow' href='ExploreStates.html'>Explore States</a>
+            <ul class='sub-menus'>
+                <li><a href='Maharashtra.html'>Maharashtra</a></li>
+                <li><a href='Rajasthan.html'>Rajasthan</a></li>
+                <li><a href='Goa.html'>Goa</a></li>
+                <li><a href='Uttarakhand.html'>Uttarakhand</a></li>
+                <li><a href='Punjab.html'>Punjab</a></li>
+                <li><a href='Delhi.html'>Delhi</a></li>
+                <li><a href='Gujrat.html'>Gujrat</a></li>
+            </ul>
+            </li>
+        </ul>
+        </nav>
+    </div>
+    <hr>
+      <section class="hero">
+      
+        <h2>Ludhiana</h2>
+        <p>~Industrial hub and vibrant culture</p>
+      </section>
+         <div class="cards-section" id="heritage-cards">
+      <!-- Places to visit in Ludhiana -->
+        <div class="place-card">
+            <img src="Images/clock-tower.jpg" alt="Clock Tower">
+            <h3>Clock Tower</h3>
+            <p>
+                The Clock Tower is a historical landmark in Ludhiana, known for its unique architecture and significance in the city’s history.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~It was built during the British era and stands as a symbol of Ludhiana’s rich heritage!
+                <b>Things to Explore at Clock Tower:</b>
+                <ul>
+                    <li>
+                        Architectural Marvel:
+                        <br>Admire the intricate design and craftsmanship of this iconic structure.
+                    </li>
+                    <li>
+                        Local Markets:
+                        <br>Explore the bustling markets surrounding the tower, offering a variety of goods.
+                    </li>
+                    <li>
+                        Historical Significance:
+                        <br>Learn about the history of the Clock Tower and its role in Ludhiana’s development.
+                    </li>
+                    <li>
+                        Photography Spot:
+                        <br>Capture stunning photographs of this architectural gem against the backdrop of the city.
+                    </li>
+                </ul>
+                <br><b>Why Visit Clock Tower?</b>
+                <br>!Because it’s not just a clock; it’s a piece of history that tells the story of Ludhiana’s past and present.
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/phillaur-fort.webp" alt="Phillaur Fort">
+            <h3>Phillaur Fort</h3>
+            <p>
+                Phillaur Fort is a historical fort that showcases the architectural brilliance of the bygone era. It offers a glimpse into the rich history of Punjab.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~The fort was built in the 19th century and served as a military outpost!
+                <b>Things to Explore at Phillaur Fort:</b>
+                <ul>
+                    <li>
+                        Historical Architecture:
+                        <br>Explore the fort’s impressive architecture and learn about its historical significance.
+                    </li>
+                    <li>
+                        Museum:
+                        <br>Visit the museum inside the fort that houses artifacts from Punjab’s glorious past.
+                    </li>
+                    <li>
+                        Scenic Views:
+                        <br>Enjoy panoramic views of the surrounding landscape from the fort’s ramparts.
+                    </li>
+                    <li>
+                        Cultural Events:
+                        <br>Participate in various cultural events and exhibitions held at the fort.
+                    </li>
+                </ul>
+                <br><b>Why Visit Phillaur Fort?</b>
+                <br>!Because it’s not just a fort; it’s a living testament to Punjab’s rich heritage and architectural grandeur.
+            </p>
+        </div>  
+        <div class="place-card">
+            <img src="Images/Gurudwara nanaksar.jpg" alt="Gurudwara Nanaksar">
+            <h3>Gurudwara Nanaksar</h3>
+            <p>
+                Gurudwara Nanaksar is a revered Sikh shrine known for its spiritual ambiance and architectural beauty. It attracts devotees and tourists alike.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~The gurudwara is famous for its community kitchen serving free meals to all visitors!
+                <b>Things to Explore at Gurudwara Nanaksar:</b>
+                <ul>
+                    <li>
+                        Spiritual Atmosphere:
+                        <br>Experience the serene and peaceful environment perfect for meditation.
+                    </li>
+                    <li>
+                        Langar Hall:
+                        <br>Enjoy the delicious free meals served in the community kitchen.
+                    </li>
+                    <li>
+                        Architectural Beauty:
+                        <br>Admire the stunning architecture and intricate carvings of the gurudwara.
+                    </li>
+                    <li>
+                        Religious Significance:
+                        <br>Learn about the history and significance of the gurudwara in Sikhism.
+                    </li>
+                </ul>
+                <br><b>Why Visit Gurudwara Nanaksar?</b>
+                <br>!Because it’s not just a place of worship; it’s a sanctuary of peace, unity, and spirituality that transcends boundaries.
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/ludhiana zoo.jpg" alt="Ludhiana Zoo">
+            <h3>Ludhiana Zoo</h3>
+            <p>
+                Ludhiana Zoo is a popular attraction for families and nature lovers. It houses a variety of animals and offers a fun day out.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~The zoo is home to over 50 species of animals, including some rare and endangered ones!
+                <b>Things to Explore at Ludhiana Zoo:</b>
+                <ul>
+                    <li>
+                        Wildlife:
+                        <br>See a diverse range of animals, including lions, tigers, and exotic birds.
+                    </li>
+                    <li>
+                        Nature Trails:
+                        <br>Enjoy peaceful walks along the well-maintained nature trails within the zoo.
+                    </li>
+                    <li>
+                        Educational Programs:
+                        <br>Participate in educational programs and workshops about wildlife conservation.
+                    </li>
+                    <li>
+                        Picnic Spots:
+                        <br>Relax and have a picnic in designated areas within the zoo.
+                    </li>
+                </ul>
+                <br><b>Why Visit Ludhiana Zoo?</b>
+                <br>!Because it’s not just a zoo; it’s a place where you can connect with nature and learn about wildlife conservation.
+            </p>
+        </div>
+            <div class="place-card">
+            <img src="Images/Neelon bridge.jpg" alt="Neelon Bridge">
+            <h3>Neelon Bridge</h3>          
+            <p>
+                Neelon Bridge is a historic bridge that connects Ludhiana with the surrounding areas. It offers a scenic view of the river and is a popular spot for photography.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~The bridge is an engineering marvel and has stood the test of time since its construction!
+                <b>Things to Explore at Neelon Bridge:</b>
+                <ul>
+                    <li>
+                        Scenic Views:
+                        <br>Enjoy breathtaking views of the river and surrounding landscapes from the bridge.
+                    </li>
+                    <li>
+                        Photography:
+                        <br>Capture stunning photographs of the bridge and its surroundings.
+                    </li>
+                    <li>
+                        Historical Significance:
+                        <br>Learn about the history and importance of the bridge in connecting communities.
+                    </li>
+                    <li>
+                        Evening Strolls:
+                        <br>Take leisurely walks along the bridge during sunset for a magical experience.
+                    </li>
+                </ul>
+                <br><b>Why Visit Neelon Bridge?</b>
+                <br>!Because it’s not just a bridge; it’s a symbol of connectivity and a perfect spot for nature lovers and photographers.  
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/hardysworld.webp" alt="Hardy’s World">
+            <h3>Hardy’s World</h3>
+            <p>
+                Hardy’s World is an amusement park that offers a fun-filled day for families and thrill-seekers. It features a variety of rides and attractions.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~It is one of the largest amusement parks in Punjab, making it a popular destination for locals and tourists!
+                <b>Things to Explore at Hardy’s World:</b>
+                <ul>
+                    <li>
+                        Thrilling Rides:
+                        <br>Experience adrenaline-pumping rides and attractions suitable for all ages.
+                    </li>
+                    <li>
+                        Water Park:
+                        <br>Enjoy the water slides and pools for a refreshing escape from the heat.
+                    </li>
+                    <li>
+                        Entertainment Shows:
+                        <br>Watch live performances and shows that entertain visitors throughout the day.
+                    </li>
+                    <li>
+                        Food Courts:
+                        <br>Savor delicious snacks and meals at various food stalls within the park.
+                    </li>
+                </ul>
+                <br><b>Why Visit Hardy’s World?</b>
+                <br>!Because it’s not just an amusement park; it’s a place where fun, excitement, and laughter come together for an unforgettable experience.
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/Deer park.jpg" alt="Deer Park">
+            <h3>Deer Park</h3>
+            <p>
+                Deer Park is a serene park that is home to a variety of deer species. It’s a great place for nature walks and relaxation.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~The park is known for its peaceful ambiance and is a favorite spot for morning walkers!
+                <b>Things to Explore at Deer Park:</b>
+                <ul>
+                    <li>
+                        Wildlife Observation:
+                        <br>Observe different species of deer in their natural habitat.
+                    </li>
+                    <li>
+                        Nature Trails:
+                        <br>Enjoy peaceful walks along the well-maintained trails surrounded by lush greenery.
+                    </li>
+                    <li>
+                        Picnic Areas:
+                        <br>Relax and have a picnic in designated areas within the park.
+                    </li>
+                    <li>
+                        Bird Watching:
+                        <br>Spot various bird species that inhabit the park.
+                    </li>
+                </ul>
+                <br><b>Why Visit Deer Park?</b>
+                <br>!Because it’s not just a park; it’s a tranquil escape into nature where you can unwind and connect with wildlife.
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/Model town park.jpg" alt="Model Town Park">
+            <h3>Model Town Park</h3>
+            <p>
+                Model Town Park is a beautifully landscaped park that offers a peaceful retreat in the heart of the city. It’s perfect for family outings and leisurely walks.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~The park is known for its lush greenery and well-maintained gardens, making it a favorite among locals!
+                <b>Things to Explore at Model Town Park:</b>
+                <ul>
+                    <li>
+                        Lush Gardens:
+                        <br>Stroll through the beautifully manicured gardens and enjoy the vibrant flowers.
+                    </li>
+                    <li>
+                        Walking Trails:
+                        <br>Take leisurely walks along the paved paths surrounded by greenery.
+                    </li>
+                    <li>
+                        Children’s Play Area:
+                        <br>Let your kids enjoy the play area designed for their entertainment.
+                    </li>
+                    <li>
+                        Relaxation Spots:
+                        <br>Find peaceful spots to sit and relax amidst nature.
+                    </li>
+                </ul>
+                <br><b>Why Visit Model Town Park?</b>
+                <br>!Because it’s not just a park; it’s a serene oasis in the city where you can escape the hustle and bustle of daily life.
+            </p>
+            </div>
+            <div class="place-card">
+            <img src="Images/Surjit hockey stadium.jpg" alt="Surjit Hockey Stadium">
+            <h3>Surjit Hockey Stadium</h3>          
+            <p>
+                Surjit Hockey Stadium is a renowned sports venue that hosts various hockey matches and events. It’s a must-visit for sports enthusiasts.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~The stadium is named after the legendary hockey player Surjit Singh, who was a national hero!
+                <b>Things to Explore at Surjit Hockey Stadium:</b>
+                <ul>
+                    <li>
+                        Live Matches:
+                        <br>Watch thrilling hockey matches featuring local and national teams.
+                    </li>
+                    <li>
+                        Sports Events:
+                        <br>Attend various sports events and tournaments held at the stadium.
+                    </li>
+                    <li>
+                        Training Sessions:
+                        <br>Observe training sessions of aspiring hockey players honing their skills.
+                    </li>
+                    <li>
+                        Sports Museum:
+                        <br>Visit the museum showcasing the history and achievements of Indian hockey.
+                    </li>
+                </ul>
+                <br><b>Why Visit Surjit Hockey Stadium?</b>
+                <br>!Because it’s not just a stadium; it’s a place where the spirit of hockey comes alive, celebrating the legacy of Indian sports.
+            </p>
+            </div>
+                <div class="place-card">
+            <img src="Images/canel view park.jpg" alt="Canal View Park">
+            <h3>Canal View Park</h3>        
+            <p>
+                Canal View Park is a picturesque park located by the canal, offering a serene environment for relaxation and leisure activities.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~The park is known for its scenic views of the canal and is a popular spot for evening strolls!
+                <b>Things to Explore at Canal View Park:</b>
+                <ul>
+                    <li>
+                        Scenic Views:
+                        <br>Enjoy the beautiful views of the canal and surrounding greenery.
+                    </li>
+                    <li>
+                        Walking Trails:
+                        <br>Take leisurely walks along the well-maintained trails by the canal.
+                    </li>
+                    <li>
+                        Boating:
+                        <br>Experience boating in the canal for a unique perspective of the park.
+                    </li>
+                    <li>
+                        Picnic Areas:
+                        <br>Relax and have a picnic in designated areas with family and friends.
+                    </li>
+                </ul>
+                <br><b>Why Visit Canal View Park?</b>
+                <br>!Because it’s not just a park; it’s a tranquil escape where you can unwind and enjoy the beauty of nature by the water.
+
+            </p>
+            </div>
+            <div class="place-card">
+            <img src="Images/Ludhiana-Mall.webp" alt="Shopping Malls">
+            <h3>Shopping Malls</h3>     
+            <p>
+                Ludhiana is home to several modern shopping malls that offer a wide range of shopping, dining, and entertainment options.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~The malls are known for their vibrant atmosphere and host various events and exhibitions!
+                <b>Things to Explore at Shopping Malls:</b>
+                <ul>
+                    <li>
+                        Retail Therapy:
+                        <br>Shop from a variety of local and international brands under one roof.
+                    </li>
+                    <li>
+                        Dining Options:
+                        <br>Enjoy a diverse range of cuisines at the food courts and restaurants.
+                    </li>
+                    <li>
+                        Entertainment:
+                        <br>Catch the latest movies at the multiplexes or enjoy gaming zones.
+                    </li>
+                    <li>
+                        Events and Exhibitions:
+                        <br>Participate in various events, exhibitions, and cultural programs held in the malls.
+                    </li>
+                </ul>
+                <br><b>Why Visit Shopping Malls?</b>
+                <br>!Because it’s not just shopping; it’s an experience where you can indulge in retail therapy, savor delicious food, and enjoy entertainment all in one place.
+            </p>
+            </div>
+            <div class="place-card">
+            <img src="Images/Market ludhiana.webp" alt="Local Markets">      
+                
+            <h3>Local Markets</h3>
+            <p> 
+                Ludhiana’s local markets are a treasure trove of traditional crafts, textiles, and local delicacies. They offer a unique shopping experience.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~The markets are famous for their vibrant atmosphere and the variety of goods available!
+                <b>Things to Explore at Local Markets:</b>
+                <ul>
+                    <li>
+                        Traditional Crafts:
+                        <br>Discover unique handicrafts, textiles, and souvenirs made by local artisans.
+                    </li>
+                    <li>
+                        Street Food:
+                        <br>Savor delicious local delicacies and street food from various stalls.
+                    </li>
+                    <li>
+                        Bargaining:
+                        <br>Experience the thrill of bargaining for the best deals on your purchases.
+                    </li>
+                    <li>
+                        Cultural Experience:
+                        <br>Immerse yourself in the local culture and interact with friendly vendors.
+                    </li>
+                </ul>
+                <br><b>Why Visit Local Markets?</b>
+                <br>!Because it’s not just shopping; it’s a cultural journey where you can experience the essence of Ludhiana through its vibrant markets.
+            </p>
+            </div>
+            </div>
+             <footer class="footer">
+        <p>&copy; 2025 Explore Bharat.</p>
+    </footer>
+</body>
+</html> 
+           

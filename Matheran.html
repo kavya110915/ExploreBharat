@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        #menu {
+            background: #000000;
+            height: 66px;
+            padding-right: 18px;
+            border-radius: 5px;
+        }
+        #menu ul, #menu li {
+            margin: 0 auto;
+            padding: 0;
+            list-style: none
+        }
+        #menu ul {
+            width: 100%;
+            text-align: right;
+            margin-top: 20px;
+        }
+        #menu li {
+            display: inline-block;
+            position: relative;
+        }
+        #menu a {
+            display: block;
+            line-height: 66px;
+            padding: 0 28px;
+            text-decoration: none;
+            color: #FFFFFF;
+            font-size: 17px;
+        }
+        #menu a.dropdown-arrow:after {
+            content: "\2B9F";
+            margin-left: 5px;
+        }
+        #menu li a:hover {
+            color: #09EFFF;
+            background: #000000;
+        }
+        #menu input {
+            display: none;
+            margin: 0;
+            padding: 0;
+            height: 66px;
+            width: 100%;
+            opacity: 0;
+            cursor: pointer
+        }
+        #menu label {
+            display: none;
+            line-height: 66px;
+            text-align: center;
+            position: absolute;
+            left: 35px
+        }
+        #menu label:before {
+            font-size: 1.6em;
+            color: #FFFFFF;
+            content: "\2261"; 
+            margin-left: 20px;
+        }
+        #menu ul.sub-menus{
+            height: auto;
+            overflow: hidden;
+            width: 170px;
+            background: #343434;
+            position: absolute;
+            z-index: 99;
+            display: none;
+        }
+        #menu ul.sub-menus li {
+            display: block;
+            text-align: left;
+            width: 100%;
+        }
+        #menu ul.sub-menus a {
+            color: #FFFFFF;
+            font-size: 15px;
+        }
+        #menu li:hover ul.sub-menus {
+            display: block
+        }
+        #menu ul.sub-menus a:hover{
+            background: #000000;
+            color: #09EFFF;
+        }
+        @media screen and (max-width: 800px){
+            #menu {position:relative}
+            #menu ul {background:#343434;position:absolute;top:100%;right:0;left:0;z-index:3;height:auto;display:none;text-align:left;}
+            #menu ul.sub-menus {width:100%;position:static;}
+            #menu ul.sub-menus a {padding-left:30px;}
+            #menu li {display:block;float:none;width:auto;}
+            #menu input, #menu label {position:absolute;top:0;left:0;display:block}
+            #menu input {z-index:4}
+            #menu input:checked + label {color:#FFFFFF}
+            #menu input:checked + label:before {content:"\00d7"}
+            #menu input:checked ~ ul {display:block}
+        }
+        .header img {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            margin-right: 690px;
+            margin-top: 10px;
+            margin-left: 25px;
+        }
+        .logo p {
+            color: #ffffff;
+        }
+        .header {
+            background-color: #000000;
+            display: flex;
+            flex: 6fr;
+            padding: 0 20px;
+        }
+        .logo {
+            display: grid;
+            grid: 2fr;
+            color: #ffffff;
+            width: 750px;
+            margin-left: 20px;
+        }
+        .hero {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 36px;
+      color: #09EFFF;
+      padding: 0;
+      margin: 0;
+    }
+
+     
+    .cards-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 40px;
+      justify-content: center;
+      align-items: center;
+      margin-left: 140px;
+      margin-right: 140px;
+      gap: 40px;
+    }
+    .place-card {
+      background-color: #1a1a1a;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(51, 153, 255, 0.2);
+      width: 600px;
+      height: 750px;
+      padding: 20px;
+      font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    .place-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px 12px 0 0;
+    }
+    .place-card h3 {
+      color: #09EFFF;
+      margin: 10px 0;
+    }
+    .place-card p {
+      color: #ffffff;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .footer {
+      background-color: #000000;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+    .place-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      margin: 0;
+      padding: 0;
+    }
+    </style>
+</head>
+<body>
+    <div class="header">  
+        <div class="logo">
+            <img src="Images/sample.jpg" alt="Logo">
+            <p>Explore Bharat</p>
+        </div>
+        <nav id='menu'>
+        <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+        <ul>
+            <li><a href='index.html'>Home</a></li>
+            <li><a href='About.html'>About</a></li>
+            <li><a href='Contact.html'>Contact Us</a></li>
+            <li><a href='HeritageSites.html'>Heritage Sites</a></li>
+            <li><a class='dropdown-arrow' href='ExploreStates.html'>Explore States</a>
+            <ul class='sub-menus'>
+                <li><a href='Maharashtra.html'>Maharashtra</a></li>
+                <li><a href='Rajasthan.html'>Rajasthan</a></li>
+                <li><a href='Goa.html'>Goa</a></li>
+                <li><a href='Uttarakhand.html'>Uttarakhand</a></li>
+                <li><a href='Punjab.html'>Punjab</a></li>
+                <li><a href='Delhi.html'>Delhi</a></li>
+                <li><a href='Gujrat.html'>Gujrat</a></li>
+            </ul>
+            </li>
+        </ul>
+        </nav>
+    </div>
+    <hr>
+      <section class="hero">
+      
+        <h2>Matheran</h2>
+        <p>~Asia's only automobile-free hill station, offering a peaceful retreat.</p>
+      </section>
+         <div class="cards-section" id="heritage-cards">
+      <!-- Places to visit in Matheran -->
+        <div class="place-card">
+            <img src="Images/PanoramaPoint.avif" alt="Panorama Point">
+            <h3>Panorama Point</h3>
+            <p>
+                Panorama Point is one of the most popular viewpoints in Matheran, offering panoramic views of the surrounding hills and valleys. It is a perfect spot for sunrise and sunset views.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~It is the highest point in Matheran, providing breathtaking views of the Western Ghats!
+                <b>Things to Explore at Panorama Point:</b>
+                <ul>
+                    <li>
+                        Scenic Views:
+                        <br>Enjoy panoramic views of the surrounding hills and valleys.
+                    </li>
+                    <li>
+                        Photography:
+                        <br>Capture stunning photographs of the landscape.
+                    </li>
+                    <li>
+                        Nature Trails:
+                        <br>Explore nearby nature trails and enjoy the serene environment.
+                    </li>
+                    <li>
+                        Picnic Spots:
+                        <br>Relax at designated picnic spots and enjoy the tranquility.
+                    </li>
+                </ul>
+                <br><b>Why Visit Panorama Point?</b>
+                <br>!Because it’s a perfect blend of natural beauty and serenity in Matheran.
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/LordPoint.jpg" alt="Lord Point">
+            <h3>Lord Point</h3>
+            <p>
+                Lord Point is another popular viewpoint in Matheran, offering stunning views of the surrounding hills and valleys. It is a great spot for nature lovers and photographers.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~It is named after Lord Curzon, who was the Viceroy of India from 1899 to 1905!
+                <b>Things to Explore at Lord Point:</b>
+                <ul>
+                    <li>
+                        Scenic Views:
+                        <br>Enjoy breathtaking views of the Western Ghats.
+                    </li>
+                    <li>
+                        Photography:
+                        <br>Capture stunning photographs of the landscape.
+                    </li>
+                    <li>
+                        Nature Trails:
+                        <br>Explore nearby nature trails and enjoy the serene environment.
+                    </li>
+                    <li>
+                        Picnic Spots:
+                        <br>Relax at designated picnic spots and enjoy the tranquility.
+                    </li>
+                </ul>
+                <br><b>Why Visit Lord Point?</b>
+                <br>!Because it’s a perfect blend of natural beauty and tranquility in Matheran.
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/CharlotteLake.jpg" alt="Charlotte Lake">
+            <h3>Charlotte Lake</h3>
+            <p>
+                Charlotte Lake is a serene lake located in Matheran, surrounded by lush greenery and hills. It is a popular spot for picnics and nature walks.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~The lake is named after Charlotte, the daughter of Sir Arthur Malet, who was the first person to build a bungalow near the lake!
+                <b>Things to Explore at Charlotte Lake:</b>
+                <ul>
+                    <li>
+                        Boating:
+                        <br>Enjoy a peaceful boat ride on the lake.
+                    </li>
+                    <li>
+                        Nature Walks:
+                        <br>Take leisurely walks along the lakeside promenade.
+                    </li>
+                    <li>
+                        Picnic Spots:
+                        <br>Relax at designated picnic spots and enjoy the serene environment.
+                    </li>
+                    <li>
+                        Photography:
+                        <br>Capture stunning photographs of the lake and surrounding hills.
+                    </li>
+                </ul>
+                <br><b>Why Visit Charlotte Lake?</b>
+                <br>!Because it’s a perfect blend of tranquility and natural beauty in Matheran.
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/OneTreeHill.avif" alt="One Tree Hill">
+            <h3>One Tree Hill</h3>
+            <p>
+                One Tree Hill is a popular trekking destination in Matheran, known for its solitary tree at the top. It offers panoramic views of the surrounding hills and valleys.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~The hill is named after the lone tree that stands at the top, which is a popular spot for photography!
+                <b>Things to Explore at One Tree Hill:</b>
+                <ul>
+                    <li>
+                        Trekking:
+                        <br>Embark on a scenic trek to reach the top of the hill.
+                    </li>
+                    <li>
+                        Scenic Views:
+                        <br>Enjoy breathtaking views of the Western Ghats from the top.
+                    </li>
+                    <li>
+                        Photography:
+                        <br>Capture stunning photographs of the landscape and the lone tree.
+                    </li>
+                    <li>
+                        Picnic Spots:
+                        <br>Relax at designated picnic spots and enjoy the tranquility.
+                    </li>
+                </ul>
+                <br><b>Why Visit One Tree Hill?</b>
+                <br>!Because it’s a perfect blend of adventure and natural beauty in Matheran.
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/MatthewPoint.jpg" alt="Matthew Point">
+            <h3>Matthew Point</h3>
+            <p>
+                Matthew Point is a scenic viewpoint in Matheran, offering stunning views of the surrounding hills and valleys. It is a great spot for nature lovers and photographers.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~It is named after Sir Matthew, who was a prominent figure in the development of Matheran as a hill station!
+                <b>Things to Explore at Matthew Point:</b>
+                <ul>
+                    <li>
+                        Scenic Views:
+                        <br>Enjoy breathtaking views of the Western Ghats.
+                    </li>
+                    <li>
+                        Photography:
+                        <br>Capture stunning photographs of the landscape.
+                    </li>
+                    <li>
+                        Nature Trails:
+                        <br>Explore nearby nature trails and enjoy the serene environment.
+                    </li>
+                    <li>
+                        Picnic Spots:
+                        <br>Relax at designated picnic spots and enjoy the tranquility.
+                    </li>
+                </ul>
+                <br><b>Why Visit Matthew Point?</b>
+                <br>!Because it’s a perfect blend of natural beauty and tranquility in Matheran.
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/PorcupinePoint.png" alt="Porcupine Point">
+            <h3>Porcupine Point</h3>
+            <p>
+                Porcupine Point is a popular viewpoint in Matheran, known for its stunning views of the surrounding hills and valleys. It is a great spot for nature lovers and photographers.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~It is named after the porcupine-shaped rock formation that resembles a porcupine!
+                <b>Things to Explore at Porcupine Point:</b>
+                <ul>
+                    <li>
+                        Scenic Views:
+                        <br>Enjoy breathtaking views of the Western Ghats.
+                    </li>
+                    <li>
+                        Photography:
+                        <br>Capture stunning photographs of the landscape.
+                    </li>
+                    <li>
+                        Nature Trails:
+                        <br>Explore nearby nature trails and enjoy the serene environment.
+                    </li>
+                    <li>
+                        Picnic Spots:
+                        <br>Relax at designated picnic spots and enjoy the tranquility.
+                    </li>
+                </ul>
+                <br><b>Why Visit Porcupine Point?</b>
+                <br>!Because it’s a perfect blend of natural beauty and tranquility in Matheran.
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/ChowkPoint.jpeg" alt="Chowk Point">
+            <h3>Chowk Point</h3>
+            <p>
+                Chowk Point is a scenic viewpoint in Matheran, offering stunning views of the surrounding hills and valleys. It is a great spot for nature lovers and photographers.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~It is named after the chowk (square) that was built by the British during their rule!
+                <b>Things to Explore at Chowk Point:</b>
+                <ul>
+                    <li>
+                        Scenic Views:
+                        <br>Enjoy breathtaking views of the Western Ghats.
+                    </li>
+                    <li>
+                        Photography:
+                        <br>Capture stunning photographs of the landscape.
+                    </li>
+                    <li>
+                        Nature Trails:
+                        <br>Explore nearby nature trails and enjoy the serene environment.
+                    </li>
+                    <li>
+                        Picnic Spots:
+                        <br>Relax at designated picnic spots and enjoy the tranquility.
+                    </li>
+                </ul>
+                <br><b>Why Visit Chowk Point?</b>
+                <br>!Because it’s a perfect blend of natural beauty and tranquility in Matheran.
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/MatheranRailway.jpeg" alt="Matheran Railway">
+            <h3>Matheran Railway</h3>
+            <p>
+                Matheran Railway is a narrow-gauge railway that connects Matheran to Neral. It is one of the oldest railways in India and offers a scenic journey through the hills.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~The railway was built in 1907 and is a UNESCO World Heritage Site!
+                <b>Things to Explore at Matheran Railway:</b>
+                <ul>
+                    <li>
+                        Scenic Journey:
+                        <br>Enjoy a scenic train ride through the hills.
+                    </li>
+                    <li>
+                        Photography:
+                        <br>Capture stunning photographs of the railway and surrounding landscape.
+                    </li>
+                    <li>
+                        Heritage Experience:
+                        <br>Experience the rich history and heritage of the railway.
+                    </li>
+                    <li>
+                        Local Markets:
+                        <br>Explore nearby markets for local handicrafts and souvenirs.
+                    </li>
+                </ul>
+                <br><b>Why Visit Matheran Railway?</b>
+                <br>!Because it’s a perfect blend of history, heritage, and natural beauty in Matheran.
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/MatheranMarket.webp" alt="Matheran Market">
+            <h3>Matheran Market</h3>
+            <p>
+                Matheran Market is a bustling market located in the heart of Matheran. It offers a variety of local handicrafts, souvenirs, and delicious street food.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~The market is known for its unique wooden toys and handicrafts made by local artisans!
+                <b>Things to Explore at Matheran Market:</b>
+                <ul>
+                    <li>
+                        Shopping:
+                        <br>Explore local shops for handicrafts, souvenirs, and clothing.
+                    </li>
+                    <li>
+                        Street Food:
+                        <br>Indulge in delicious local street food and snacks.
+                    </li>
+                    <li>
+                        Cultural Experience:
+                        <br>Experience the vibrant culture and traditions of Matheran.
+                    </li>
+                    <li>
+                        Photography:
+                        <br>Capture stunning photographs of the market and its vibrant atmosphere.
+                    </li>
+                </ul>
+                <br><b>Why Visit Matheran Market?</b>
+                <br>!Because it’s a perfect blend of culture, shopping, and culinary delights in Matheran.
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/MatheranClockTower.jpg" alt="Matheran Clock Tower">
+            <h3>Matheran Clock Tower</h3>
+            <p>
+                Matheran Clock Tower is a historic clock tower located in the heart of Matheran. It is a popular landmark and a great spot for photography.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~The clock tower was built in 1910 and is a symbol of Matheran’s rich history!
+                <b>Things to Explore at Matheran Clock Tower:</b>
+                <ul>
+                    <li>
+                        Photography:
+                        <br>Capture stunning photographs of the clock tower and its surroundings.
+                    </li>
+                    <li>
+                        Heritage Experience:
+                        <br>Experience the rich history and heritage of Matheran.
+                    </li>
+                    <li>
+                        Local Markets:
+                        <br>Explore nearby markets for local handicrafts and souvenirs.
+                    </li>
+                    <li>
+                        Scenic Views:
+                        <br>Enjoy panoramic views of the surrounding hills from the clock tower.
+                    </li>
+                </ul>
+                <br><b>Why Visit Matheran Clock Tower?</b>
+                <br>!Because it’s a perfect blend of history, heritage, and natural beauty in Matheran.
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/MatheranTemple.jpg" alt="Matheran Temple">
+            <h3>Matheran Temple</h3>
+            <p>
+                Matheran Temple is a historic temple located in Matheran, dedicated to Lord Ganesh. It is a popular pilgrimage site and a great spot for spiritual seekers.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~The temple is believed to be over 100 years old and is a symbol of Matheran’s rich cultural heritage!
+                <b>Things to Explore at Matheran Temple:</b>
+                <ul>
+                    <li>
+                        Spiritual Experience:
+                        <br>Experience the spiritual energy and tranquility of the temple.
+                    </li>
+                    <li>
+                        Heritage Experience:
+                        <br>Explore the rich history and architecture of the temple.
+                    </li>
+                    <li>
+                        Local Markets:
+                        <br>Explore nearby markets for religious items and souvenirs.
+                    </li>
+                    <li>
+                        Photography:
+                        <br>Capture stunning photographs of the temple and its surroundings.
+                    </li>
+                </ul>
+                <br><b>Why Visit Matheran Temple?</b>
+                <br>!Because it’s a perfect blend of spirituality, culture, and natural beauty in Matheran.
+            </p>
+        </div>
+    </div>
+        <footer class="footer">
+        Explore Bharat © 2025
+    </footer>
+</body>
+</html>

@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        #menu {
+            background: #000000;
+            height: 66px;
+            padding-right: 18px;
+            border-radius: 5px;
+        }
+        #menu ul, #menu li {
+            margin: 0 auto;
+            padding: 0;
+            list-style: none
+        }
+        #menu ul {
+            width: 100%;
+            text-align: right;
+            margin-top: 20px;
+        }
+        #menu li {
+            display: inline-block;
+            position: relative;
+        }
+        #menu a {
+            display: block;
+            line-height: 66px;
+            padding: 0 28px;
+            text-decoration: none;
+            color: #FFFFFF;
+            font-size: 17px;
+        }
+        #menu a.dropdown-arrow:after {
+            content: "\2B9F";
+            margin-left: 5px;
+        }
+        #menu li a:hover {
+            color: #09EFFF;
+            background: #000000;
+        }
+        #menu input {
+            display: none;
+            margin: 0;
+            padding: 0;
+            height: 66px;
+            width: 100%;
+            opacity: 0;
+            cursor: pointer
+        }
+        #menu label {
+            display: none;
+            line-height: 66px;
+            text-align: center;
+            position: absolute;
+            left: 35px
+        }
+        #menu label:before {
+            font-size: 1.6em;
+            color: #FFFFFF;
+            content: "\2261"; 
+            margin-left: 20px;
+        }
+        #menu ul.sub-menus{
+            height: auto;
+            overflow: hidden;
+            width: 170px;
+            background: #343434;
+            position: absolute;
+            z-index: 99;
+            display: none;
+        }
+        #menu ul.sub-menus li {
+            display: block;
+            text-align: left;
+            width: 100%;
+        }
+        #menu ul.sub-menus a {
+            color: #FFFFFF;
+            font-size: 15px;
+        }
+        #menu li:hover ul.sub-menus {
+            display: block
+        }
+        #menu ul.sub-menus a:hover{
+            background: #000000;
+            color: #09EFFF;
+        }
+        @media screen and (max-width: 800px){
+            #menu {position:relative}
+            #menu ul {background:#343434;position:absolute;top:100%;right:0;left:0;z-index:3;height:auto;display:none;text-align:left;}
+            #menu ul.sub-menus {width:100%;position:static;}
+            #menu ul.sub-menus a {padding-left:30px;}
+            #menu li {display:block;float:none;width:auto;}
+            #menu input, #menu label {position:absolute;top:0;left:0;display:block}
+            #menu input {z-index:4}
+            #menu input:checked + label {color:#FFFFFF}
+            #menu input:checked + label:before {content:"\00d7"}
+            #menu input:checked ~ ul {display:block}
+        }
+        .header img {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            margin-right: 690px;
+            margin-top: 10px;
+            margin-left: 25px;
+        }
+        .logo p {
+            color: #ffffff;
+        }
+        .header {
+            background-color: #000000;
+            display: flex;
+            flex: 6fr;
+            padding: 0 20px;
+        }
+        .logo {
+            display: grid;
+            grid: 2fr;
+            color: #ffffff;
+            width: 750px;
+            margin-left: 20px;
+        }
+        .hero {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 36px;
+      color: #09EFFF;
+      padding: 0;
+      margin: 0;
+    }
+
+     
+    .cards-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 40px;
+      justify-content: center;
+      align-items: center;
+      margin-left: 140px;
+      margin-right: 140px;
+      gap: 40px;
+    }
+    .place-card {
+      background-color: #1a1a1a;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(51, 153, 255, 0.2);
+      width: 600px;
+      height: 750px;
+      padding: 20px;
+      font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    .place-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px 12px 0 0;
+    }
+    .place-card h3 {
+      color: #09EFFF;
+      margin: 10px 0;
+    }
+    .place-card p {
+      color: #ffffff;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .footer {
+      background-color: #000000;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+    .place-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      margin: 0;
+      padding: 0;
+    }
+    </style>
+</head>
+<body>
+    <div class="header">  
+        <div class="logo">
+            <img src="Images/sample.jpg" alt="Logo">
+            <p>Explore Bharat</p>
+        </div>
+        <nav id='menu'>
+        <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+        <ul>
+            <li><a href='index.html'>Home</a></li>
+            <li><a href='About.html'>About</a></li>
+            <li><a href='Contact.html'>Contact Us</a></li>
+            <li><a href='HeritageSites.html'>Heritage Sites</a></li>
+            <li><a class='dropdown-arrow' href='ExploreStates.html'>Explore States</a>
+            <ul class='sub-menus'>
+                <li><a href='Maharashtra.html'>Maharashtra</a></li>
+                <li><a href='Rajasthan.html'>Rajasthan</a></li>
+                <li><a href='Goa.html'>Goa</a></li>
+                <li><a href='Uttarakhand.html'>Uttarakhand</a></li>
+                <li><a href='Punjab.html'>Punjab</a></li>
+                <li><a href='Delhi.html'>Delhi</a></li>
+                <li><a href='Gujrat.html'>Gujrat</a></li>
+            </ul>
+            </li>
+        </ul>
+        </nav>
+    </div>
+    <hr>
+      <section class="hero">
+      
+        <h2>Nagpur</h2>
+        <p>~Gateway to India's Tiger Reserves and Wildlife Sanctuaries.</p>
+      </section>
+         <div class="cards-section" id="heritage-cards">
+        <!-- Tourist places in Nagpur -->
+        <div class="place-card">
+            <img src="Images/TadobaAndhariTigerReserve.jpg" alt="Tadoba Andhari Tiger Reserve">
+            <h3>Tadoba Andhari Tiger Reserve: The Land of Tigers</h3>
+            <p>
+                Tadoba Andhari Tiger Reserve is one of the largest and oldest national parks in Maharashtra, known for its rich biodiversity and thriving tiger population.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~It is home to one of the highest densities of tigers in India!
+                <b>Things to Explore at Tadoba Andhari Tiger Reserve:</b>
+                <ul>
+                    <li>
+                        The Safari:
+                        <br>Experience thrilling jeep safaris through the dense forests and witness majestic tigers in their natural habitat.
+                    </li>
+                    <li>
+                        The Flora and Fauna:
+                        <br>Explore the diverse wildlife, including leopards, sloth bears, and various bird species.
+                    </li>
+                    <li>
+                        The Scenic Beauty:
+                        <br>Enjoy the breathtaking landscapes and serene lakes within the reserve.
+                    </li>
+                    <li>
+                        The Photography:
+                        <br>Capture stunning photographs of wildlife and nature.
+                    </li>
+                    <li>
+                        The Eco-Tourism:
+                        <br>Engage in eco-friendly tourism practices and support local communities.
+                    </li>
+                </ul>
+                <br><b>Why Visit Tadoba Andhari Tiger Reserve?</b>
+                <br>!Because it’s not just a tiger reserve, but a sanctuary for wildlife enthusiasts and nature lovers that offers an unforgettable experience!
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/Deekshabhoomi.webp" alt="Deekshabhoomi">
+            <h3>Deekshabhoomi: The Birthplace of Buddhism in Nagpur</h3>
+            <p>
+                Deekshabhoomi is a significant Buddhist monument in Nagpur, where Dr. B.R. Ambedkar embraced Buddhism along with thousands of his followers.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~It is the largest stupa in Asia and a symbol of social justice and equality!
+                <b>Things to Explore at Deekshabhoomi:</b>
+                <ul>
+                    <li>
+                        The Stupa:
+                        <br>Marvel at the grand stupa, which is a symbol of peace and enlightenment.
+                    </li>
+                    <li>
+                        The Ambedkar Memorial:
+                        <br>Learn about Dr. B.R. Ambedkar’s life and his contributions to society.
+                    </li>
+                    <li>
+                        The Peace Park:
+                        <br>Enjoy the serene environment and meditate in the peaceful surroundings.
+                    </li>
+                    <li>
+                        The Cultural Significance:
+                        <br>Understand the importance of Buddhism in India and its impact on society.
+                    </li>
+                    <li>
+                        The Community Events:
+                        <br>Participate in various cultural and religious events held throughout the year.
+                    </li>
+                </ul>
+                <br><b>Why Visit Deekshabhoomi?</b>
+                <br>!Because it’s not just a monument, but a place that embodies the spirit of equality, justice, and peace for all!
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/DragonPalaceTemple.jpeg" alt="Dragon Palace Temple">
+            <h3>Dragon Palace Temple: A Serene Buddhist Retreat</h3>
+            <p>
+                Dragon Palace Temple is a beautiful Buddhist temple located in Nagpur, known for its stunning architecture and peaceful ambiance.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~It is one of the largest Buddhist temples in India and a symbol of harmony and tranquility!
+                <b>Things to Explore at Dragon Palace Temple:</b>
+                <ul>
+                    <li>
+                        The Architecture:
+                        <br>Admire the intricate carvings and unique design of the temple.
+                    </li>
+                    <li>
+                        The Meditation Halls:
+                        <br>Experience the serene environment perfect for meditation and reflection.
+                    </li>
+                    <li>
+                        The Gardens:
+                        <br>Stroll through the beautifully landscaped gardens surrounding the temple.
+                    </li>
+                    <li>
+                        The Cultural Events:
+                        <br>Participate in various cultural and religious events held at the temple.
+                    </li>
+                    <li>
+                        The Peaceful Atmosphere:
+                        <br>Enjoy the tranquility and spiritual ambiance of the temple.
+                    </li>
+                </ul>
+                <br><b>Why Visit Dragon Palace Temple?</b>
+                <br>!Because it’s not just a temple, but a sanctuary for peace seekers and a place to connect with your inner self!
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/ZeroMilestone.jpg" alt="Zero Milestone">
+            <h3>Zero Milestone: The Geographical Center of India</h3>
+            <p>
+                Zero Milestone is a historical monument in Nagpur, marking the geographical center of India and serving as a significant landmark.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~It is the point from which all distances in India are measured!
+                <b>Things to Explore at Zero Milestone:</b>
+                <ul>
+                    <li>
+                        The Monument:
+                        <br>Visit the iconic monument that symbolizes the heart of India.
+                    </li>
+                    <li>
+                        The Historical Significance:
+                        <br>Learn about the history and importance of Zero Milestone in Indian geography.
+                    </li>
+                    <li>
+                        The Surrounding Area:
+                        <br>Explore the nearby parks and gardens for a relaxing experience.
+                    </li>
+                    <li>
+                        The Cultural Events:
+                        <br>Participate in various cultural events and celebrations held at the site.
+                    </li>
+                    <li>
+                        The Photography:
+                        <br>Capture stunning photographs of this unique landmark.
+                    </li>
+                </ul>
+                <br><b>Why Visit Zero Milestone?</b>
+                <br>!Because it’s not just a monument, but a place that connects you to the very heart of India’s geography and culture!
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/KhindsiLake.jpg" alt="Khindsi Lake">
+            <h3>Khindsi Lake: A Serene Escape into Nature</h3>
+            <p>
+                Khindsi Lake is a picturesque lake located near Nagpur, offering a perfect getaway for nature lovers and adventure enthusiasts.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~It is a popular spot for water sports and boating activities!
+                <b>Things to Explore at Khindsi Lake:</b>
+                <ul>
+                    <li>
+                        The Boating:
+                        <br>Enjoy thrilling boat rides and water sports activities on the serene waters of the lake.
+                    </li>
+                    <li>
+                        The Scenic Beauty:
+                        <br>Marvel at the breathtaking views of the surrounding hills and lush greenery.
+                    </li>
+                    <li>
+                        The Wildlife:
+                        <br>Spot various bird species and other wildlife in the area.
+                    </li>
+                    <li>
+                        The Picnic Spots:
+                        <br>Relax and unwind at the designated picnic areas around the lake.
+                    </li>
+                    <li>
+                        The Adventure Activities:
+                        <br>Engage in trekking, cycling, and other adventure activities in the vicinity.
+                    </li>
+                </ul>
+                <br><b>Why Visit Khindsi Lake?</b>
+                <br>!Because it’s not just a lake, but a paradise for nature lovers and adventure seekers looking for a refreshing escape!
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/SevagramAshram.jpeg" alt="Sevagram Ashram">
+            <h3>Sevagram Ashram: The Spiritual Retreat of Mahatma Gandhi</h3>
+            <p>
+                Sevagram Ashram is a historical site in Nagpur, where Mahatma Gandhi lived and worked towards India's independence.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~It is a place of immense historical significance and a symbol of peace and non-violence!
+                <b>Things to Explore at Sevagram Ashram:</b>
+                <ul>
+                    <li>
+                        The Gandhi Museum:
+                        <br>Learn about Mahatma Gandhi’s life, teachings, and his role in India’s freedom struggle.
+                    </li>
+                    <li>
+                        The Ashram Complex:
+                        <br>Explore the simple yet profound living quarters and prayer halls used by Gandhi.
+                    </li>
+                    <li>
+                        The Peaceful Environment:
+                        <br>Experience the serene atmosphere perfect for meditation and reflection.
+                    </li>
+                    <li>
+                        The Cultural Significance:
+                        <br>Understand the principles of non-violence and truth that Gandhi advocated.
+                    </li>
+                    <li>
+                        The Community Events:
+                        <br>Participate in various cultural and spiritual events held at the ashram.
+                    </li>
+                </ul>
+                <br><b>Why Visit Sevagram Ashram?</b>
+                <br>!Because it’s not just an ashram, but a place that embodies the spirit of peace, non-violence, and social justice!
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/EmpressGarden.jpg" alt="Empress Garden">
+            <h3>Empress Garden: A Floral Paradise in Nagpur</h3>
+            <p>
+                Empress Garden is a beautiful botanical garden in Nagpur, known for its diverse collection of plants and flowers.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~It is a haven for nature lovers and a perfect spot for photography enthusiasts!
+                <b>Things to Explore at Empress Garden:</b>
+                <ul>
+                    <li>
+                        The Floral Displays:
+                        <br>Admire the vibrant flowers and unique plant species in the garden.
+                    </li>
+                    <li>
+                        The Walking Trails:
+                        <br>Enjoy leisurely walks along the well-maintained paths surrounded by lush greenery.
+                    </li>
+                    <li>
+                        The Picnic Spots:
+                        <br>Relax and unwind at the designated picnic areas within the garden.
+                    </li>
+                    <li>
+                        The Educational Tours:
+                        <br>Learn about various plant species and their ecological significance.
+                    </li>
+                    <li>
+                        The Photography Opportunities:
+                        <br>Capture stunning photographs of the beautiful landscapes and floral arrangements.
+                    </li>
+                </ul>
+                <br><b>Why Visit Empress Garden?</b>
+                <br>!Because it’s not just a garden, but a floral paradise that offers a refreshing escape into nature’s beauty!
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/NagpurCentralMusuem.jpeg" alt="Nagpur Central Museum">
+            <h3>Nagpur Central Museum: A Journey Through History</h3>
+            <p>
+                Nagpur Central Museum is a historical museum that showcases the rich cultural heritage and history of Nagpur and the surrounding region.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~It houses a vast collection of artifacts, sculptures, and paintings from different eras!
+                <b>Things to Explore at Nagpur Central Museum:</b>
+                <ul>
+                    <li>
+                        The Artifacts:
+                        <br>Discover ancient artifacts, coins, and sculptures that tell the story of Nagpur’s history.
+                    </li>
+                    <li>
+                        The Galleries:
+                        <br>Explore various galleries dedicated to archaeology, anthropology, and natural history.
+                    </li>
+                    <li>
+                        The Educational Programs:
+                        <br>Participate in workshops and educational programs organized by the museum.
+                    </li>
+                    <li>
+                        The Cultural Significance:
+                        <br>Understand the historical importance of Nagpur in India’s cultural landscape.
+                    </li>
+                    <li>
+                        The Photography:
+                        <br>Capture stunning photographs of the museum’s architecture and exhibits.
+                    </li>
+                </ul>
+                <br><b>Why Visit Nagpur Central Museum?</b>
+                <br>!Because it’s not just a museum, but a gateway to understanding the rich history and culture of Nagpur!
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/NagpurBotanicalGarden.avif" alt="Nagpur Botanical Garden">
+            <h3>Nagpur Botanical Garden: A Green Oasis in the City</h3>
+            <p>
+                Nagpur Botanical Garden is a sprawling garden that features a wide variety of plants, trees, and flowers, making it a perfect spot for nature lovers.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~It is home to several rare and endangered plant species!
+                <b>Things to Explore at Nagpur Botanical Garden:</b>
+                <ul>
+                    <li>
+                        The Plant Collection:
+                        <br>Explore the diverse collection of plants and trees from different parts of the world.
+                    </li>
+                    <li>
+                        The Walking Trails:
+                        <br>Enjoy peaceful walks along the well-maintained trails surrounded by lush greenery.
+                    </li>
+                    <li>
+                        The Picnic Areas:
+                        <br>Relax and unwind at the designated picnic spots within the garden.
+                    </li>
+                    <li>
+                        The Educational Tours:
+                        <br>Learn about various plant species and their ecological significance.
+                    </li>
+                    <li>
+                        The Photography Opportunities:
+                        <br>Capture stunning photographs of the beautiful landscapes and floral arrangements.
+                    </li>
+                </ul>
+                <br><b>Why Visit Nagpur Botanical Garden?</b>
+                <br>!Because it’s not just a garden, but a green oasis that offers a refreshing escape into nature’s beauty!
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/NagpurFort.jpg" alt="Nagpur Fort">
+            <h3>Nagpur Fort: A Historical Marvel</h3>
+            <p>
+                Nagpur Fort is a historical fort that dates back to the 18th century, showcasing the rich history and architectural brilliance of the region.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~It was built by the Bhonsle dynasty and served as a strategic military base!
+                <b>Things to Explore at Nagpur Fort:</b>
+                <ul>
+                    <li>
+                        The Architecture:
+                        <br>Admire the impressive architecture and intricate carvings of the fort.
+                    </li>
+                    <li>
+                        The Historical Significance:
+                        <br>Learn about the fort’s role in the history of Nagpur and its significance in the region.
+                    </li>
+                    <li>
+                        The Scenic Views:
+                        <br>Enjoy panoramic views of the city from the fort’s ramparts.
+                    </li>
+                    <li>
+                        The Cultural Events:
+                        <br>Participate in various cultural events and festivals held at the fort.
+                    </li>
+                    <li>
+                        The Photography:
+                        <br>Capture stunning photographs of the fort’s architecture and surroundings.
+                    </li>
+                </ul>
+                <br><b>Why Visit Nagpur Fort?</b>
+                <br>!Because it’s not just a fort, but a historical marvel that offers a glimpse into Nagpur’s glorious past!
+            </p>
+        </div>
+    </div>
+    <footer class="footer">
+        Explore Bharat © 2025
+    </footer>
+</body>
+</html>

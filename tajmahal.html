@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Taj Mahal - Explore Bharat</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1740&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.75);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #09EFFF;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .location {
+      text-align: center;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    .hero-img {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .hero-img img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #09EFFF;
+    }
+
+    .description, .features, .info-section {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      color: #e0e0e0;
+      text-align: justify;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      margin: 20px 0 10px;
+      color: #09EFFF;
+      font-weight: bold;
+    }
+
+    .gallery-title {
+      font-size: 1.8rem;
+      color: #09EFFF;
+      margin-bottom: 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s;
+      border: 2px solid #444;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #bbb;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+      .description, .features, .info-section {
+        font-size: 1rem;
+      }
+    }
+
+    .highlight {
+      color: #09EFFF;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <div class="container">
+      <h1>Taj Mahal</h1>
+      <div class="location">📍 Agra, Uttar Pradesh</div>
+
+      <div class="hero-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Taj-Mahal.jpg/800px-Taj-Mahal.jpg" alt="Taj Mahal" />
+      </div>
+
+      <div class="description">
+        The <span class="highlight"> Taj Mahal is an ageless wonder </span> that has been captivating hearts for centuries. Built by <span class="highlight">Mughal Emperor Shah Jahan as a tribute to his beloved wife, Mumtaz Mahal</span>, it's a blend of Indian, Persian, and Islamic styles. The monument's stunning architecture, intricate marble work, and beautiful gardens make it a must-visit destination.
+        <br /><br />
+        Designated as a <span class="highlight">UNESCO World Heritage Site</span>, the Taj Mahal showcases intricate carvings, symmetrical gardens, and a captivating central dome that attracts millions of visitors each year. Its beauty shifts with the changing light of day—from golden sunrise hues to glowing moonlit nights.
+        <br /> <br />
+        The Taj Mahal's design is attributed to <span class="highlight"> Ustad Ahmad Lahori</span>, and its perfect proportions, intricate details, and beautiful calligraphy make it a masterpiece of Mughal architecture. The gardens are designed according to the Charbagh style, representing the Garden of Paradise. The monument's symmetry, arches, and domes are perfectly proportioned, creating a sense of harmony and balance.
+        <br /> <br />
+        The Taj Mahal is not just a monument; <span class="highlight">it's a symbol of love, devotion, and creativity.</span> Its beauty and significance have inspired countless artists, writers, and musicians over the centuries. It's a testament to India's rich cultural heritage and a source of pride for Indians. The Taj Mahal's enduring beauty continues to captivate visitors from around the world, making it one of the most <span class="highlight"> recognizable and beloved landmarks in the world.</span>
+      </div>
+
+      <div class="features">
+        <div class="section-title">Key Features:</div>
+        <ul>
+          <li>Built in <span class="highlight"> 1632</span> and completed in <span class="highlight"> 1648</span></li>
+          <li><strong> style:</strong> Mughal architecture combining Persian, Islamic, and Indian styles</li>
+          <li><strong> Material:</strong>Semi-translucent white marble inlaid with precious stones</li>
+          <li><strong>Garden Design: </strong> Charbagh-style symmetrical gardens and a reflecting pool</li>
+          <li><strong> Dome Height:</strong> 73 meters, flanked by four minarets</li>
+        </ul>
+      </div>
+
+      <div class="info-section">
+        <div class="section-title">Visitor Information:</div>
+        <p><strong>Opening Hours:</strong> 6:00 AM – 6:30 PM (Closed on Fridays)</p>
+        <p><strong class="highlight">Entry Fee:</strong><br />
+          Indian Citizens: ₹50<br />
+          Foreign Tourists: ₹1100<br />
+          Additional ₹200 for mausoleum entry
+        </p>
+        <p><strong class="highlight">Best Time to Visit:</strong> October to March for pleasant weather</p>
+        <p><strong class="highlight">How to Reach:</strong> Located in Agra, easily accessible via road and rail from major cities like Delhi, Jaipur, and Lucknow.</p>
+      </div>
+
+      <div class="gallery-title">Image Gallery</div>
+      <div class="gallery">
+        <img src="https://images.pexels.com/photos/1603650/pexels-photo-1603650.jpeg?cs=srgb&dl=pexels-sudipta-1603650.jpg&fm=jpg" alt="Taj Mahal View 1" />
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTywe3lCSpwI5XA8uVVdqNzH2qGzuhAP4cqQ&s" alt="Taj Mahal View 2" />
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFodc15Ht3jyZu6kFxsX7ghFyIKy-Bu5ddCA&s" alt="Taj Mahal View 3" />
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyLRSdYbuBH6xaiOlk8QDOJa6-qDdeYqlNAw&s" alt="Taj Mahal Garden View" />
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkRAUQHFwAlJpnb1GHDgSZ-eD1k6BlN8r6QA&s" alt="Taj Mahal Sunset" />
+        <img src="https://www.savaari.com/blog/wp-content/uploads/2022/08/sylwia-bartyzel-eU4pipU_8HA-unsplash-1-scaled.jpg" alt="Taj Mahal Side View" />
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2025 Explore Bharat. All rights reserved.
+    </footer>
+  </div>
+</body>
+</html>

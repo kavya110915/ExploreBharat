@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        #menu {
+            background: #000000;
+            height: 66px;
+            padding-right: 18px;
+            border-radius: 5px;
+        }
+        #menu ul, #menu li {
+            margin: 0 auto;
+            padding: 0;
+            list-style: none
+        }
+        #menu ul {
+            width: 100%;
+            text-align: right;
+            margin-top: 20px;
+        }
+        #menu li {
+            display: inline-block;
+            position: relative;
+        }
+        #menu a {
+            display: block;
+            line-height: 66px;
+            padding: 0 28px;
+            text-decoration: none;
+            color: #FFFFFF;
+            font-size: 17px;
+        }
+        #menu a.dropdown-arrow:after {
+            content: "\2B9F";
+            margin-left: 5px;
+        }
+        #menu li a:hover {
+            color: #09EFFF;
+            background: #000000;
+        }
+        #menu input {
+            display: none;
+            margin: 0;
+            padding: 0;
+            height: 66px;
+            width: 100%;
+            opacity: 0;
+            cursor: pointer
+        }
+        #menu label {
+            display: none;
+            line-height: 66px;
+            text-align: center;
+            position: absolute;
+            left: 35px
+        }
+        #menu label:before {
+            font-size: 1.6em;
+            color: #FFFFFF;
+            content: "\2261"; 
+            margin-left: 20px;
+        }
+        #menu ul.sub-menus{
+            height: auto;
+            overflow: hidden;
+            width: 170px;
+            background: #343434;
+            position: absolute;
+            z-index: 99;
+            display: none;
+        }
+        #menu ul.sub-menus li {
+            display: block;
+            text-align: left;
+            width: 100%;
+        }
+        #menu ul.sub-menus a {
+            color: #FFFFFF;
+            font-size: 15px;
+        }
+        #menu li:hover ul.sub-menus {
+            display: block
+        }
+        #menu ul.sub-menus a:hover{
+            background: #000000;
+            color: #09EFFF;
+        }
+        @media screen and (max-width: 800px){
+            #menu {position:relative}
+            #menu ul {background:#343434;position:absolute;top:100%;right:0;left:0;z-index:3;height:auto;display:none;text-align:left;}
+            #menu ul.sub-menus {width:100%;position:static;}
+            #menu ul.sub-menus a {padding-left:30px;}
+            #menu li {display:block;float:none;width:auto;}
+            #menu input, #menu label {position:absolute;top:0;left:0;display:block}
+            #menu input {z-index:4}
+            #menu input:checked + label {color:#FFFFFF}
+            #menu input:checked + label:before {content:"\00d7"}
+            #menu input:checked ~ ul {display:block}
+        }
+        .header img {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            margin-right: 690px;
+            margin-top: 10px;
+            margin-left: 25px;
+        }
+        .logo p {
+            color: #ffffff;
+        }
+        .header {
+            background-color: #000000;
+            display: flex;
+            flex: 6fr;
+            padding: 0 20px;
+        }
+        .logo {
+            display: grid;
+            grid: 2fr;
+            color: #ffffff;
+            width: 750px;
+            margin-left: 20px;
+        }
+        .hero {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 36px;
+      color: #09EFFF;
+      padding: 0;
+      margin: 0;
+    }
+    .cards-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 40px;
+      justify-content: center;
+      align-items: center;
+      margin-left: 140px;
+      margin-right: 140px;
+      gap: 40px;
+    }
+    .place-card {
+      background-color: #1a1a1a;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(51, 153, 255, 0.2);
+      width: 600px;
+      height: 750px;
+      padding: 20px;
+      font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    .place-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px 12px 0 0;
+    }
+    .place-card h3 {
+      color: #09EFFF;
+      margin: 10px 0;
+    }
+    .place-card p {
+      color: #ffffff;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .footer {
+      background-color: #000000;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+    .place-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      margin: 0;
+      padding: 0;
+    }
+    </style>
+</head>
+<body>
+    <div class="header">  
+        <div class="logo">
+            <img src="Images/sample.jpg" alt="Logo">
+            <p>Explore Bharat</p>
+        </div>
+        <nav id='menu'>
+        <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+        <ul>
+            <li><a href='index.html'>Home</a></li>
+            <li><a href='About.html'>About</a></li>
+            <li><a href='Contact.html'>Contact Us</a></li>
+            <li><a href='HeritageSites.html'>Heritage Sites</a></li>
+            <li><a class='dropdown-arrow' href='ExploreStates.html'>Explore States</a>
+            <ul class='sub-menus'>
+                <li><a href='Maharashtra.html'>Maharashtra</a></li>
+                <li><a href='Rajasthan.html'>Rajasthan</a></li>
+                <li><a href='Goa.html'>Goa</a></li>
+                <li><a href='Uttarakhand.html'>Uttarakhand</a></li>
+                <li><a href='Punjab.html'>Punjab</a></li>
+                <li><a href='Delhi.html'>Delhi</a></li>
+                <li><a href='Gujrat.html'>Gujrat</a></li>
+            </ul>
+            </li>
+        </ul>
+        </nav>
+    </div>
+    <hr>
+    <section class="hero">
+        <h2>Vadodra</h2>
+        <p>~A city rich in history, culture, and heritage.</p> 
+    </section>
+    <div class="cards-section" id="heritage-cards">
+        <!-- Tourist places in Vadodra -->
+        <div class="place-card">
+            <img src="Images/LaxmiVilasPalace.jpg" alt="Laxmi Vilas Palace">
+            <h3>Laxmi Vilas Palace: A Royal Heritage</h3>
+            <p>
+                Laxmi Vilas Palace is a magnificent palace that showcases the grandeur of the Maratha dynasty.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~It is one of the largest private residences in the world, built in Indo-Saracenic style!
+                <b>Things to Explore at Laxmi Vilas Palace:</b>
+                <ul>
+                    <li>
+                        The Durbar Hall:
+                        <br>Marvel at the opulent interiors adorned with intricate carvings and chandeliers.
+                    </li>
+                    <li>
+                        The Museum:
+                        <br>Explore the museum that houses royal artifacts, paintings, and sculptures.
+                    </li>
+                    <li>
+                        The Gardens:
+                        <br>Stroll through the beautifully landscaped gardens surrounding the palace.
+                    </li>
+                    <li>
+                        The Maharaja’s Collection:
+                        <br>Discover the collection of weapons, armor, and vintage cars owned by the royal family.
+                    </li>
+                    <li>
+                        The Sound and Light Show:
+                        <br>Experience the captivating sound and light show that narrates the history of the palace!
+                    </li>
+                </ul>
+                <br><b>Why Visit Laxmi Vilas Palace?</b>
+                <br>!Because it’s a glimpse into the royal heritage and architectural brilliance of Vadodra!
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/KhanderaoMarket.jpg" alt="Khanderao Market">
+            <h3>Khanderao Market: A Vibrant Bazaar</h3>
+            <p>
+                Khanderao Market is a bustling market that offers a glimpse into the local culture and lifestyle.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~It is one of the oldest markets in Vadodra, known for its vibrant atmosphere!
+                <b>Things to Explore at Khanderao Market:</b>
+                <ul>
+                    <li>
+                        The Local Handicrafts:
+                        <br>Shop for traditional handicrafts, textiles, and souvenirs.
+                    </li>
+                    <li>
+                        The Street Food:
+                        <br>Indulge in delicious local street food and snacks.
+                    </li>
+                    <li>
+                        The Colorful Stalls:
+                        <br>Explore the colorful stalls selling fresh produce, spices, and flowers.
+                    </li>
+                    <li>
+                        The Cultural Vibe:
+                        <br>Experience the lively atmosphere filled with music and chatter.
+                    </li>
+                    <li>
+                        The Historical Significance:
+                        <br>Learn about the history and significance of the market in Vadodra’s culture!
+                    </li>
+                </ul>
+                <br><b>Why Visit Khanderao Market?</b>
+                <br>!Because it’s a perfect place to experience the local culture and shop for unique items!
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/SayajiGarden.jpg" alt="Sayaji Garden">
+            <h3>Sayaji Garden: A Green Retreat</h3>
+            <p>
+                Sayaji Garden is a sprawling park that offers a peaceful escape amidst lush greenery and serene surroundings.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~It is one of the largest gardens in Vadodra, designed by the famous landscape architect Sir William Goldring!
+                <b>Things to Explore at Sayaji Garden:</b>
+                <ul>
+                    <li>
+                        The Zoo:
+                        <br>Visit the zoo that houses various species of animals and birds.
+                    </li>
+                    <li>
+                        The Museum:
+                        <br>Explore the museum that showcases artifacts and exhibits related to natural history.
+                    </li>
+                    <li>
+                        The Boating Facility:
+                        <br>Enjoy boating on the serene lake within the garden.
+                    </li>
+                    <li>
+                        The Walking Trails:
+                        <br>Take leisurely walks along the well-maintained walking trails amidst nature.
+                    </li>
+                    <li>
+                        The Children’s Play Area:
+                        <br>Let your kids have fun at the dedicated play area with swings and slides!
+                    </li>
+                </ul>
+                <br><b>Why Visit Sayaji Garden?</b>
+                <br>!Because it’s a perfect place for relaxation, recreation, and enjoying nature!
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/SardarPatelPlaneterium.webp" alt="Sardar Patel Planetarium">
+            <h3>Sardar Patel Planetarium: A Cosmic Experience</h3>
+            <p>
+                Sardar Patel Planetarium is a fascinating place that offers a glimpse into the wonders of the universe.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~It is one of the largest planetariums in Gujarat, named after the great leader Sardar Vallabhbhai Patel!
+                <b>Things to Explore at Sardar Patel Planetarium:</b>
+                <ul>
+                    <li>
+                        The Star Shows:
+                        <br>Experience mesmerizing star shows that take you on a journey through the cosmos.
+                    </li>
+                    <li>
+                        The Exhibits:
+                        <br>Explore various exhibits related to astronomy, space science, and technology.
+                    </li>
+                    <li>
+                        The Interactive Displays:
+                        <br>Engage with interactive displays that make learning about space fun!
+                    </li>
+                    <li>
+                        The Educational Programs:
+                        <br>Participate in educational programs and workshops for all age groups.
+                    </li>
+                    <li>
+                        The Telescope Viewing:
+                        <br>Enjoy telescope viewing sessions to observe celestial objects up close!
+                    </li>
+                </ul>
+                <br><b>Why Visit Sardar Patel Planetarium?</b>
+                <br>!Because it’s a perfect place for astronomy enthusiasts and anyone curious about the universe!
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/SurSagarLake.jpg" alt="Sur Sagar Lake">
+            <h3>Sur Sagar Lake: A Serene Escape</h3>
+            <p>
+                Sur Sagar Lake is a picturesque lake that offers a tranquil escape from the hustle and bustle of the city.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~It is one of the largest lakes in Vadodra, known for its scenic beauty and serene ambiance!
+                <b>Things to Explore at Sur Sagar Lake:</b>
+                <ul>
+                    <li>
+                        The Boating Facility:
+                        <br>Enjoy boating on the calm waters of the lake.
+                    </li>
+                    <li>
+                        The Walking Path:
+                        <br>Take leisurely walks along the well-maintained walking path around the lake.
+                    </li>
+                    <li>
+                        The Sunset Views:
+                        <br>Experience breathtaking sunset views reflecting on the water!
+                    </li>
+                    <li>
+                        The Local Flora and Fauna:
+                        <br>Observe various species of birds and plants around the lake.
+                    </li>
+                    <li>
+                        The Cultural Events:
+                        <br>Participate in cultural events and festivals celebrated near the lake!
+                    </li>
+                </ul>
+                <br><b>Why Visit Sur Sagar Lake?</b>
+                <br>!Because it’s a perfect place for relaxation, nature walks, and enjoying scenic views!
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/BarodaMuseum.jpg" alt="Baroda Museum">
+            <h3>Baroda Museum: A Cultural Treasure</h3>
+            <p>
+                Baroda Museum is a cultural hub that showcases the rich heritage and history of Vadodra.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~It houses a vast collection of artifacts, artworks, and exhibits from various cultures!
+                <b>Things to Explore at Baroda Museum:</b>
+                <ul>
+                    <li>
+                        The Art Gallery:
+                        <br>Admire the exquisite collection of paintings, sculptures, and artifacts.
+                    </li>
+                    <li>
+                        The Natural History Section:
+                        <br>Explore exhibits related to natural history, including fossils and specimens.
+                    </li>
+                    <li>
+                        The Archaeological Finds:
+                        <br>Discover archaeological finds that shed light on the region’s history.
+                    </li>
+                    <li>
+                        The Cultural Exhibits:
+                        <br>Learn about the diverse cultures and traditions represented in the museum.
+                    </li>
+                    <li>
+                        The Educational Programs:
+                        <br>Participate in educational programs and workshops organized by the museum!
+                    </li>
+                </ul>
+                <br><b>Why Visit Baroda Museum?</b>
+                <br>!Because it’s a perfect place for history buffs and anyone interested in art and culture!
+            </p>
+        </div>
+        <div class="place-card">
+            <img src="Images/IskconTempleVadodara.jpg" alt="ISKCON Temple">
+            <h3>ISKCON Temple: A Spiritual Haven</h3>
+            <p>
+                ISKCON Temple is a serene temple dedicated to Lord Krishna, offering a peaceful environment for spiritual seekers.
+                <br>
+                <b>Fun Fact:</b>
+                <br>~It is one of the largest ISKCON temples in Gujarat, known for its beautiful architecture!
+                <b>Things to Explore at ISKCON Temple:</b>
+                <ul>
+                    <li>
+                        The Main Shrine:
+                        <br>Offer prayers and seek blessings at the beautifully adorned main shrine.
+                    </li>
+                    <li>
+                        The Meditation Hall:
+                        <br>Engage in meditation and spiritual practices in the tranquil meditation hall.
+                    </li>
+                    <li>
+                        The Cultural Programs:
+                        <br>Participate in various cultural and spiritual programs organized by the temple.
+                    </li>
+                    <li>
+                        The Gift Shop:
+                        <br>Shop for spiritual books, artifacts, and souvenirs from the temple gift shop!
+                    </li>
+                    <li>
+                        The Community Kitchen:
+                        <br>Enjoy delicious prasadam served at the community kitchen!
+                    </li>
+                </ul>
+                <br><b>Why Visit ISKCON Temple?</b>
+                <br>!Because it’s a perfect place for spiritual rejuvenation and experiencing divine bliss!
+            </p>
+        </div>
+    </div>
+    <footer class="footer">
+        Explore Bharat © 2025
+    </footer>
+</body>
+</html>

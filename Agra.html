@@ -37,6 +37,7 @@
       text-align: center;
       color: #ccc;
       margin-bottom: 20px;
+      font-size: 1rem;
     }
 
     .hero-img {
@@ -103,18 +104,57 @@
       margin-top: 40px;
     }
 
-    @media (max-width: 600px) {
+    .highlight {
+      color: #09EFFF;
+      font-weight: bold;
+    }
+
+    /* Tablet Adjustments */
+    @media (max-width: 1024px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+      .hero-img img {
+        width: 180px;
+        height: 180px;
+      }
+    }
+
+    /* Mobile Adjustments */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 10px;
+      }
       h1 {
         font-size: 2rem;
+      }
+      .location {
+        font-size: 0.9rem;
       }
       .description, .features, .info-section {
         font-size: 1rem;
       }
+      .gallery {
+        grid-template-columns: 1fr 1fr;
+      }
     }
 
-    .highlight {
-      color: #09EFFF;
-      font-weight: bold;
+    /* Small Mobile (Phones under 500px) */
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      .hero-img img {
+        width: 150px;
+        height: 150px;
+      }
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+      .description, .features, .info-section {
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
     }
   </style>
 </head>
@@ -125,7 +165,7 @@
       <div class="location">📍 Agra, Uttar Pradesh</div>
 
       <div class="hero-img">
-        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/09/01/08/32/agra-fort.jpg?w=900&h=500&s=1 " alt="Agra Fort" />
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/09/01/08/32/agra-fort.jpg?w=900&h=500&s=1" alt="Agra Fort" />
       </div>
 
       <div class="description">
@@ -161,12 +201,12 @@
 
       <div class="gallery-title">Image Gallery</div>
       <div class="gallery">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Agra_Fort-Walls_and_left_ditch-20131018.jpg/1024px-Agra_Fort-Walls_and_left_ditch-20131018.jpg " alt="Agra Fort Walls" />
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpOHiONhE9vvFLUPFNsE3mqzMRC_i6VUooBw&s " alt="Diwan-i-Am" />
-        <img src=" https://www.rajasthanbhumitours.com/blog/wp-content/uploads/2024/08/Moti-Masjid-The-Pearl-Mosque-of-Agra-Fort.jpg" alt="Moti Masjid" />
-        <img src="https://im.hunt.in/cg/Agra/City-Guide/musamman-agra.jpg " alt="Musamman Burj" />
-        <img src=" https://www.tajmahal.gov.in/images/gallery/agra-fort/1.jpg" alt="Agra Fort Gates" />
-        <img src=" https://ucarecdn.com/2f1c5d0f-02a0-4268-8702-1d93feffb806/" alt="Agra Fort Interior" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Agra_Fort-Walls_and_left_ditch-20131018.jpg/1024px-Agra_Fort-Walls_and_left_ditch-20131018.jpg" alt="Agra Fort Walls" />
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpOHiONhE9vvFLUPFNsE3mqzMRC_i6VUooBw&s" alt="Diwan-i-Am" />
+        <img src="https://www.rajasthanbhumitours.com/blog/wp-content/uploads/2024/08/Moti-Masjid-The-Pearl-Mosque-of-Agra-Fort.jpg" alt="Moti Masjid" />
+        <img src="https://im.hunt.in/cg/Agra/City-Guide/musamman-agra.jpg" alt="Musamman Burj" />
+        <img src="https://www.tajmahal.gov.in/images/gallery/agra-fort/1.jpg" alt="Agra Fort Gates" />
+        <img src="https://ucarecdn.com/2f1c5d0f-02a0-4268-8702-1d93feffb806/" alt="Agra Fort Interior" />
       </div>
     </div>
 

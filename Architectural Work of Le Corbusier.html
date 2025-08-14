@@ -14,6 +14,17 @@
     }
     @media screen and (max-width: 800px) {
   .cards-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 40px;
+  justify-content: center;
+  align-items: start;
+  gap: 40px;
+}
+
+/* Remove large side margins for mobile */
+@media screen and (max-width: 800px) {
+  .cards-section {
     grid-template-columns: 1fr; /* Single column on mobile */
     padding: 20px;
     margin: 0; /* Remove big left/right margins */
@@ -23,6 +34,22 @@
     width: 100%; /* Make card fit screen width */
     height: auto; /* Let height adjust naturally */
   }
+  .header {
+    flex-direction: column; /* Stack logo & menu */
+    align-items: center;
+  }
+  .logo {
+    width: auto;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .header img {
+    margin: 10px 0;
+  }
+}
+
   .header {
     flex-direction: column; /* Stack logo & menu */
     align-items: center;
@@ -196,4 +223,5 @@
   </div>
 </body>
 </html>
+
 

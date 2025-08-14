@@ -167,20 +167,84 @@
             gap: 40px;
             padding: 40px;
         }
-        .place-card {
-            background-color: #1a1a1a;
-            border-radius: 12px;
-            box-shadow: 0 0 10px rgba(51, 153, 255, 0.2);
-            padding: 20px;
-            width: 100%;
-            height: auto;
+       #menu {
+        background: #000000;
+        border-radius: 5px;
+    }
+    #menu ul, #menu li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    #menu ul {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+    #menu li {
+        position: relative;
+    }
+    #menu a {
+        text-decoration: none;
+        color: #FFFFFF;
+        font-size: 16px;
+        padding: 10px;
+    }
+    #menu a.dropdown-arrow:after {
+        content: "\2B9F";
+        margin-left: 5px;
+    }
+    #menu li a:hover {
+        color: #09EFFF;
+    }
+    #menu ul.sub-menus {
+        display: none;
+        position: absolute;
+        background: #343434;
+        width: 170px;
+        z-index: 99;
+    }
+    #menu ul.sub-menus li {
+        display: block;
+    }
+    #menu ul.sub-menus a {
+        display: block;
+        padding: 8px 12px;
+    }
+    #menu li:hover ul.sub-menus {
+        display: block;
+    }
+    @media screen and (max-width: 800px) {
+        #menu ul {
+            flex-direction: column;
+            background: #343434;
+            display: none;
+            padding: 10px;
         }
-        .place-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 12px 12px 0 0;
+        #menu input, #menu label {
+            display: block;
         }
+        #menu label {
+            cursor: pointer;
+            font-size: 24px;
+            color: #FFFFFF;
+        }
+        #menu input:checked ~ ul {
+            display: flex;
+        }
+        .content {
+            flex-direction: column;
+            text-align: center;
+            gap: 20px;
+        }
+        .content h1 {
+            font-size: 36px;
+        }
+        .hero-image img {
+            width: 200px;
+            height: 200px;
+        }
+    }
         .place-card h3 {
             color: #09EFFF;
             margin: 10px 0;
@@ -198,55 +262,6 @@
             text-align: center;
             padding: 20px;
             width: 100%;
-        }
-
-        /* Responsive adjustments */
-        @media screen and (max-width: 1024px) {
-            .cards-section {
-                grid-template-columns: 1fr;
-                padding: 20px;
-            }
-            .place-card {
-                max-width: 500px;
-                margin: 0 auto;
-            }
-        }
-        @media screen and (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                text-align: center;
-            }
-            .logo {
-                justify-content: center;
-                margin-bottom: 10px;
-            }
-            .cards-section {
-                gap: 20px;
-                padding: 15px;
-            }
-            .place-card {
-                max-width: 90%;
-            }
-            .hero h2 {
-                font-size: 28px;
-            }
-            .hero p {
-                font-size: 14px;
-            }
-        }
-        @media screen and (max-width: 480px) {
-            body {
-                font-size: 14px;
-            }
-            .hero h2 {
-                font-size: 24px;
-            }
-            .place-card h3 {
-                font-size: 18px;
-            }
-            .place-card p {
-                font-size: 13px;
-            }
         }
     </style>
 </head>
@@ -605,4 +620,5 @@
     </footer>
 </body>
 </html>
+
 

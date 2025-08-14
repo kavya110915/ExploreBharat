@@ -141,29 +141,50 @@
     }
 
     .cards-section {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      padding: 40px;
-      justify-content: center;
-      align-items: center;
-      margin-left: 140px;
-      margin-right: 140px;
-      gap: 40px;
-    }
-    .place-card {
-      background-color: #1a1a1a;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(51, 153, 255, 0.2);
-      width: 600px;
-      height: 750px;
-      padding: 20px;
-      font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    }
-    .place-card img {
-      width: 100%;
-      height: auto;
-      border-radius: 12px 12px 0 0;
-    }
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 40px;
+  justify-content: center;
+  align-items: start;
+  gap: 40px;
+}
+
+/* Remove large side margins for mobile */
+@media screen and (max-width: 800px) {
+  .cards-section {
+    grid-template-columns: 1fr; /* Single column on mobile */
+    padding: 20px;
+    margin: 0; /* Remove big left/right margins */
+    gap: 20px;
+  }
+  .place-card {
+    width: 100%; /* Make card fit screen width */
+    height: auto; /* Let height adjust naturally */
+  }
+  .header {
+    flex-direction: column; /* Stack logo & menu */
+    align-items: center;
+  }
+  .logo {
+    width: auto;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .header img {
+    margin: 10px 0;
+  }
+}
+
+/* Make images adapt nicely */
+.place-card img {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  object-fit: cover;
+}
+
     .place-card h3 {
       color: #09EFFF;
       margin: 10px 0;
@@ -480,4 +501,5 @@
         <p>&copy; 2025 Explore Bharat.</p>
     </footer>
 </body>
+
 </html> 

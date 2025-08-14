@@ -9,6 +9,32 @@
             background-color: #000000;
             color: #ffffff;
         }
+        @media screen and (max-width: 800px) {
+  .cards-section {
+    grid-template-columns: 1fr; /* Single column on mobile */
+    padding: 20px;
+    margin: 0; /* Remove big left/right margins */
+    gap: 20px;
+  }
+  .place-card {
+    width: 100%; /* Make card fit screen width */
+    height: auto; /* Let height adjust naturally */
+  }
+  .header {
+    flex-direction: column; /* Stack logo & menu */
+    align-items: center;
+  }
+  .logo {
+    width: auto;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .header img {
+    margin: 10px 0;
+  }
+}
         #menu {
             background: #000000;
             height: 66px;
@@ -442,4 +468,5 @@
         Explore Bharat © 2025
     </footer>
 </body>
+
 </html>

@@ -186,6 +186,35 @@
   .header img {
     margin: 10px 0;
   }
+     #menu ul {
+            flex-direction: column;
+            background: #343434;
+            display: none;
+            padding: 10px;
+        }
+        #menu input, #menu label {
+            display: block;
+        }
+        #menu label {
+            cursor: pointer;
+            font-size: 24px;
+            color: #FFFFFF;
+        }
+        #menu input:checked ~ ul {
+            display: flex;
+        }
+        .content {
+            flex-direction: column;
+            text-align: center;
+            gap: 20px;
+        }
+        .content h1 {
+            font-size: 36px;
+        }
+        .hero-image img {
+            width: 200px;
+            height: 200px;
+        }
 }
 
 /* Make images adapt nicely */
@@ -578,3 +607,4 @@
     </footer>
 </body>
 </html>
+

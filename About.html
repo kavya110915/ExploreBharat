@@ -3,196 +3,204 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Explore Bharat</title>
-<style>
-    body {
-        background-color: #000000;
-        color: #ffffff;
-        margin: 0;
-        font-family: Arial, sans-serif;
-    }
-
-    /* HEADER */
-    .header {
-        background-color: #000000;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 20px;
-        flex-wrap: wrap;
-    }
-    .logo {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-    .logo img {
-        height: 50px;
-        width: 50px;
-        border-radius: 50%;
-    }
-    .logo p {
-        color: #ffffff;
-        margin: 0;
-        font-size: 18px;
-    }
-
-    /* MENU */
-    #menu {
-        background: #000000;
-    }
-    #menu ul, #menu li {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-    }
-    #menu ul {
-        display: flex;
-        gap: 20px;
-        align-items: center;
-    }
-    #menu li {
-        position: relative;
-    }
-    #menu a {
-        display: block;
-        padding: 10px;
-        text-decoration: none;
-        color: #FFFFFF;
-        font-size: 17px;
-    }
-    #menu a.dropdown-arrow:after {
-        content: "\2B9F";
-        margin-left: 5px;
-    }
-    #menu li a:hover {
-        color: #09EFFF;
-    }
-    #menu ul.sub-menus {
-        display: none;
-        position: absolute;
-        background: #343434;
-        width: 170px;
-        z-index: 99;
-    }
-    #menu ul.sub-menus li {
-        display: block;
-    }
-    #menu ul.sub-menus a {
-        padding: 8px 12px;
-        font-size: 15px;
-    }
-    #menu li:hover ul.sub-menus {
-        display: block;
-    }
-
-    /* ABOUT SECTION */
-    .about-section {
-        max-width: 900px;
-        margin: auto;
-        padding: 40px 20px;
-    }
-    .section-title {
-        text-align: center;
-        font-size: 2.5rem;
-        margin-bottom: 40px;
-    }
-    .card {
-        background-color: #364145;
-        padding: 25px;
-        margin-bottom: 30px;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(181, 255, 255, 0.1);
-    }
-    .card h2 {
-        font-size: 1.6rem;
-        margin-bottom: 15px;
-    }
-    .card p {
-        line-height: 1.6;
-        font-size: 1rem;
-    }
-    .highlight {
-        color: #00ffff;
-        font-weight: 600;
-    }
-
-    /* MOBILE STYLES */
-    @media screen and (max-width: 800px) {
+<title>Document</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            margin: 0;
+            font-family: system-ui, sans-serif;
+        }
+    
+        /* Navigation */
+        #menu {
+            background: #000000;
+            border-radius: 5px;
+        }
+        #menu ul, #menu li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
         #menu ul {
-            flex-direction: column;
-            background: #343434;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        #menu li {
+            position: relative;
+        }
+        #menu a {
+            text-decoration: none;
+            color: #FFFFFF;
+            font-size: 16px;
+            padding: 10px;
+        }
+        #menu a.dropdown-arrow:after {
+            content: "\2B9F";
+            margin-left: 5px;
+        }
+        #menu li a:hover {
+            color: #09EFFF;
+        }
+        #menu ul.sub-menus {
             display: none;
-            width: 100%;
-            padding: 10px 0;
+            position: absolute;
+            background: #343434;
+            width: 170px;
+            z-index: 99;
+        }
+        #menu ul.sub-menus li {
+            display: block;
+        }
+        #menu ul.sub-menus a {
+            display: block;
+            padding: 8px 12px;
+        }
+        #menu li:hover ul.sub-menus {
+            display: block;
         }
         #menu input, #menu label {
-            display: block;
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            cursor: pointer;
-        }
-        #menu label {
-            font-size: 24px;
-            color: #FFFFFF;
-        }
-        #menu input {
             display: none;
         }
-        #menu input:checked ~ ul {
+    
+        /* Header */
+        .header {
+            background-color: #000000;
             display: flex;
+            align-items: center;
+            padding: 0 20px;
+            flex-wrap: wrap;
+            justify-content: space-between;
         }
         .logo {
-            justify-content: center;
-            width: 100%;
-            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .section-title {
-            font-size: 1.8rem;
+        .logo img {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
         }
-        .card {
+        .logo p {
+            color: #ffffff;
+            margin: 0;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    
+        /* Hero */
+        .hero {
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .hero h2 {
+            font-size: 36px;
+            color: #09EFFF;
+            margin: 0;
+        }
+        .hero p {
+            font-size: 16px;
+            margin-top: 5px;
+        }
+    
+        /* Cards Section */
+        .cards-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .place-card {
+            background: #111;
             padding: 15px;
+            border-radius: 10px;
         }
-        .card h2 {
-            font-size: 1.3rem;
+        .place-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            display: block;
         }
-        .card p {
-            font-size: 0.95rem;
+        .place-card h3 {
+            color: #09EFFF;
+            margin: 10px 0;
         }
-    }
-</style>
+        .place-card p {
+            color: #ffffff;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+    
+        /* Footer */
+        .footer {
+            background-color: #000000;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+        }
+    
+        /* Mobile Styles */
+        @media screen and (max-width: 800px) {
+            #menu ul {
+                flex-direction: column;
+                align-items: flex-start;
+                background: #343434;
+                display: none;
+                padding: 10px;
+            }
+            #menu input, #menu label {
+                display: block;
+            }
+            #menu label {
+                cursor: pointer;
+                font-size: 24px;
+                color: #FFFFFF;
+                padding: 10px;
+            }
+            #menu input:checked ~ ul {
+                display: flex;
+            }
+            .hero h2 {
+                font-size: 28px;
+            }
+            .hero p {
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="header">  
-        <div class="logo">
-            <img src="Images/sample.jpg" alt="Logo">
-            <p>Explore Bharat</p>
-        </div>
-        <nav id='menu'>
-            <input type='checkbox' id='menu-toggle'>
-            <label for='menu-toggle'>&#9776;</label>
-            <ul>
-                <li><a href='index.html'>Home</a></li>
-                <li><a href='About.html'>About</a></li>
-                <li><a href='Contact.html'>Contact Us</a></li>
-                <li><a href='HeritageSites.html'>Heritage Sites</a></li>
-                <li>
-                    <a class='dropdown-arrow' href='ExploreStates.html'>Explore States</a>
-                    <ul class='sub-menus'>
-                        <li><a href='Maharashtra.html'>Maharashtra</a></li>
-                        <li><a href='Rajasthan.html'>Rajasthan</a></li>
-                        <li><a href='Goa.html'>Goa</a></li>
-                        <li><a href='Uttarakhand.html'>Uttarakhand</a></li>
-                        <li><a href='Punjab.html'>Punjab</a></li>
-                        <li><a href='Delhi.html'>Delhi</a></li>
-                        <li><a href='Gujrat.html'>Gujrat</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
+<!-- Example HTML structure -->
+<div class="header">  
+    <div class="logo">
+        <img src="Images/sample.jpg" alt="Logo">
+        <p>Explore Bharat</p>
     </div>
-    <hr>
+    <nav id='menu'>
+        <input type='checkbox' id='responsive-menu'><label for="responsive-menu">☰</label>
+        <ul>
+            <li><a href='index.html'>Home</a></li>
+            <li><a href='About.html'>About</a></li>
+            <li><a href='Contact.html'>Contact Us</a></li>
+            <li><a href='HeritageSites.html'>Heritage Sites</a></li>
+            <li><a class='dropdown-arrow' href='ExploreStates.html'>Explore States</a>
+                <ul class='sub-menus'>
+                    <li><a href='Maharashtra.html'>Maharashtra</a></li>
+                    <li><a href='Rajasthan.html'>Rajasthan</a></li>
+                    <li><a href='Goa.html'>Goa</a></li>
+                    <li><a href='Uttarakhand.html'>Uttarakhand</a></li>
+                    <li><a href='Punjab.html'>Punjab</a></li>
+                    <li><a href='Delhi.html'>Delhi</a></li>
+                    <li><a href='Gujrat.html'>Gujrat</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</div>
     <section class="about-section">
         <h1 class="section-title">About <span class="highlight">Us</span></h1>
 
@@ -225,3 +233,4 @@
     </section>
 </body>
 </html>
+

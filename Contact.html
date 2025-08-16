@@ -142,6 +142,60 @@
             padding: 20px;
             width: 100%;
         }
+
+        /* Contact Form Styling */
+.contactus {
+    max-width: 500px;
+    margin: 0 auto;
+    background: #111;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    text-align: left;
+}
+.contactus h2 {
+    text-align: center;
+    color: #09EFFF;
+    margin-bottom: 20px;
+}
+.contactus label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    font-size: 14px;
+}
+.contactus input,
+.contactus textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 8px;
+    background: #222;
+    color: #fff;
+    font-size: 14px;
+}
+.contactus input:focus,
+.contactus textarea:focus {
+    outline: none;
+    border: 2px solid #09EFFF;
+    background: #1a1a1a;
+}
+.contactus button {
+    width: 100%;
+    padding: 12px;
+    background: #09EFFF;
+    color: #000;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.contactus button:hover {
+    background: #07c7d6;
+}
+
     
         /* Mobile Styles */
         @media screen and (max-width: 800px) {
@@ -202,28 +256,27 @@
     </nav>
 </div>
     <section class="hero">
-        <center>
-            <div class="contactus">
-                <h2>Contact Us</h2>
-                <form action="#" method="post">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                    <br>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                    <br>
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-                    <br>
-                    <button type="submit">Send</button>
-                </form>
-            </div>
-        </center>
-    </section>
+    <div class="contactus">
+        <h2>Contact Us</h2>
+        <form action="#" method="post">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+</section>
     <footer>
         <p>&copy; 2025 Explore Bharat. All rights reserved.</p>
     </footer>
 </body>
 </html>
+
 
 

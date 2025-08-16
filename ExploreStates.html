@@ -218,12 +218,12 @@
   <script>
     const data = [
       { name: "Maharashtra",state: "Maharashtra",city: "", info: "A land of Maratha valor, vibrant culture, and natural beauty.", link: "Maharashtra.html" },
-      { name: "Khangchendzonga National Park",state: "sikkim", city: "Sikkim", img:"", info: "A pristine Himalayan wilderness in Sikkim, home to glaciers, forests, and the majestic Mount Khangchendzonga.", link: "Khangchendzonga .html" },
-      { name: "Konark Sun Temple",state: "Odisha", city: "Konark", img: "", info: "A majestic 13th-century chariot-shaped temple dedicated to the Sun God, showcasing the zenith of ancient Odishan architecture and craftsmanship.", link: "konark.html" },
-      { name: "Qutub Minar",state: "Delhi", city: "Mehrauli", img: "", info: "A towering symbol of Indo-Islamic heritage, this 12th-century minaret stands as a remarkable testament to Delhi’s medieval glory.", link: "qutubminar.html" },
-      { name: "Red Fort",state: "Delhi", city: "Chandni Chauk", img: "", info: "An architectural marvel of red sandstone, the Red Fort served as the grand residence of Mughal emperors and remains a powerful emblem of India's sovereignty.", link: "redfort.html" },
-      { name: "Ellora Caves",state: "Maharashtra", city: "Aurangabad", img: "", info: "A spectacular complex of rock-cut temples and monasteries, Ellora showcases the harmonious coexistence of Hindu, Buddhist, and Jain heritage in ancient India.", link: "ellora.html" },
-      { name: "Ajanta Caves",state: "Maharashtra", city: "Aurangabad", img: "", info: "Renowned for their exquisite ancient murals and Buddhist rock-cut architecture, the Ajanta Caves reflect the spiritual and artistic brilliance of ancient India.", link: "ajanta.html" }
+      { name: "Rajasthan",state: "Rajasthan", city: "", info: "Colors, camels, and timeless charm.", link: "Rajasthan.html" },
+      { name: "Goa",state: "Goa", city: "", info: "Sandy toes, salty air, Goan vibes everywhere.", link: "Goa.html" },
+      { name: "Uttarakhand",state: "Uttarakhand", city: "", info: "A towering symbol of Indo-Islamic heritage, this 12th-century minaret stands as a remarkable testament to Delhi’s medieval glory.", link: "qutubminar.html" },
+      { name: "Punjab",state: "Punjab", city: "", info: "An architectural marvel of red sandstone, the Red Fort served as the grand residence of Mughal emperors and remains a powerful emblem of India's sovereignty.", link: "redfort.html" },
+      { name: "Delhi",state: "Delhi", city: "", info: "A spectacular complex of rock-cut temples and monasteries, Ellora showcases the harmonious coexistence of Hindu, Buddhist, and Jain heritage in ancient India.", link: "ellora.html" },
+      { name: "Gujrat",state: "Gujrat", city: "", info: "Renowned for their exquisite ancient murals and Buddhist rock-cut architecture, the Ajanta Caves reflect the spiritual and artistic brilliance of ancient India.", link: "ajanta.html" }
     ];
 
     function displayCards(filter = "") {
@@ -240,7 +240,6 @@
         card.className = "place-card";
         card.innerHTML = `
           <a href="${place.link}" style="text-decoration:none;color:inherit;">
-            <img src="${place.img}" alt="${place.name}" />
             <div class="info">
               <h3>${place.name}</h3>
               <p>${place.info}</p>
